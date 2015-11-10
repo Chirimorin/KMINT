@@ -5,6 +5,8 @@
 #include "SDL_timer.h"
 #include <time.h>
 #include "Graph.h"
+#include "Cow.h"
+#include "Rabbit.h"
 
 int main(int args[])
 {
@@ -20,6 +22,8 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	auto graph = new Graph();
+	application->AddRenderable(new Cow());
+	application->AddRenderable(new Rabbit());
 
 	//while (true){}
 	while (application->IsRunning())
