@@ -194,3 +194,7 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+SDL2-2.0.3/
+Documentation/
+SDL2_ttf-2.0.12/
+SDL2_image-2.0.0/
