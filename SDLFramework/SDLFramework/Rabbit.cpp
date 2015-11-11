@@ -2,9 +2,7 @@
 
 Rabbit::Rabbit()
 {
-	//mX = 50;
-	//mY = 50;
-	//mTexture = mApplication->LoadTexture("rabbit.bmp");
+	mTexture = mApplication->LoadTexture("rabbit.bmp");
 }
 
 Rabbit::~Rabbit()

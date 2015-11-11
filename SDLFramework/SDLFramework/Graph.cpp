@@ -3,7 +3,9 @@
 #include "Waypoint.h"
 #include "FWApplication.h"
 #include <algorithm>
+#include <queue>
 
+#include <iostream>
 
 Graph::Graph()
 {
@@ -23,6 +25,16 @@ Graph::Graph()
 	edges.push_back(new Edge(waypoints.at(3), waypoints.at(5)));
 	edges.push_back(new Edge(waypoints.at(4), waypoints.at(6)));
 	edges.push_back(new Edge(waypoints.at(4), waypoints.at(5)));
+
+	/*waypoints.at(0)->setDistance(4);
+	waypoints.at(1)->setDistance(2);
+	waypoints.at(2)->setDistance(6);
+	waypoints.at(3)->setDistance(3);
+	waypoints.at(4)->setDistance(5);
+	waypoints.at(5)->setDistance(0);
+	waypoints.at(6)->setDistance(1);*/
+
+	getShortestPath(waypoints.at(0), waypoints.at(4));
 }
 
 
@@ -68,4 +80,90 @@ void Graph::DrawGraph(FWApplication* application)
 			true
 			);
 	});
+}
+
+std::vector<Waypoint*> Graph::getShortestPath(Waypoint* start, Waypoint* end)
+{
+	struct GreaterThanByDistance {
+		bool operator()(Waypoint* w1,Waypoint* w2) const {
+			return w1->getDistance() > w2->getDistance();
+		}
+	};
+
+	std::priority_queue<Waypoint*, std::vector<Waypoint*>, GreaterThanByDistance> queue;
+
+	/*std::for_each(waypoints.begin(), waypoints.end(), [&queue](Waypoint* w)
+	{
+		std::cout << w << "d: " << w->getDistance() << std::endl;
+		queue.push(w);
+	});
+
+	std::cout << std::endl;
+	std::cout << std::endl;
+
+	for (int i = 0; i < waypoints.size(); i++) {
+		std::cout << queue.top() << "d: " << queue.top()->getDistance() << std::endl;
+		queue.pop();
+	}*/
+
+	// Zet de afstand van het eerste waypoint op 0 en zet het waypoint in de queue
+	start->setDistance(0);
+	queue.push(start);
+
+	while (!queue.empty()) {
+		Waypoint* waypoint = queue.top();
+		queue.pop();
+
+		std::vector<Edge*> edges = waypoint->getEdges();
+		std::for_each(edges.begin(), edges.end(), [waypoint, &queue](Edge* e) 
+		{
+			// Bepaalt buur waypoint
+			Waypoint* waypoint2 = e->getWaypoint1();
+			if (waypoint == waypoint2) {
+				waypoint2 = e->getWaypoint2();
+			}
+
+			// TODO:: MOET NOG MET VECTOR2 ???
+			// Geschatte afstand van deze waypoint naar doel
+			int deltaX = waypoint->getPosition().x - waypoint2->getPosition().x;
+			int deltaY = waypoint->getPosition().y - waypoint2->getPosition().y;
+			int estimatedDistance = sqrt(deltaX * deltaX + deltaY * deltaY);
+
+			int distance = waypoint->getDistance() + e->getWeight() + estimatedDistance; 
+
+			// Bepaalt de kleinste afstand
+			if (distance < waypoint2->getDistance()) {
+				waypoint2->setDistance(distance);
+				waypoint2->setPreviousWaypoint(waypoint);
+			}
+
+			// Voegt eventueel waypoint toe aan de queue
+			if (!waypoint2->getIsDone()) {
+				queue.push(waypoint2);
+			}
+		});
+
+		waypoint->setIsDone(true);
+	}
+
+	std::vector<Waypoint*> route;
+
+	// Bepaalt kortste route
+	Waypoint* currentWaypoint = end;
+	while (currentWaypoint != nullptr) {
+		route.push_back(currentWaypoint);
+		currentWaypoint = currentWaypoint->getPreviousWaypoint();
+	}
+
+	// Zet de waypoints in de goede volgorde
+	std::reverse(route.begin(), route.end());
+
+	// Reset waypoint data
+	std::for_each(waypoints.begin(), waypoints.end(), [](Waypoint* w) {
+		w->setDistance(INT_MAX);
+		w->setPreviousWaypoint(nullptr);
+		w->setIsDone(false);
+	});
+
+	return route;
 }

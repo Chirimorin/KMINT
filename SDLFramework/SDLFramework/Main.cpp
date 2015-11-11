@@ -40,7 +40,9 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-
+				case SDLK_RETURN:
+					// VERPLAATS KOE EN EVENTUEEL HAAS
+					break;
 				default:
 					break;
 				}

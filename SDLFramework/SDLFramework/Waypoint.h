@@ -12,9 +12,26 @@ public:
 
 	Vector2 getPosition();
 	void addEdge(Edge* edge);
+
+	std::vector<Edge*> getEdges();
+
+	int getDistance();
+	void setDistance(int distance);
+
+	Waypoint* getPreviousWaypoint();
+	void setPreviousWaypoint(Waypoint* waypoint);
+
+	bool getIsDone();
+	void setIsDone(bool isDone);
+
 private:
 	Vector2 position;
 
 	std::vector<Edge*> edges;
+
+	// Voor het bepalen van het kortste pad
+	int distance_;
+	Waypoint* previousWaypoint_ = nullptr;
+	bool isDone_;
 };
 
