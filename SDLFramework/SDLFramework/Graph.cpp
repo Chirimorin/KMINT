@@ -2,6 +2,7 @@
 #include "Edge.h"
 #include "Waypoint.h"
 #include "FWApplication.h"
+#include "Random.h"
 #include <algorithm>
 #include <queue>
 
@@ -81,6 +82,12 @@ void Graph::DrawGraph(FWApplication* application)
 			);
 	});
 }
+
+Waypoint* Graph::getRandomWaypoint()
+{
+	return waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+}
+
 
 std::vector<Waypoint*> Graph::getShortestPath(Waypoint* start, Waypoint* end)
 {

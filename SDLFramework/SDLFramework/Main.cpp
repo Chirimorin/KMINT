@@ -22,8 +22,8 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	auto graph = new Graph();
-	application->AddRenderable(new Cow());
-	application->AddRenderable(new Rabbit());
+	application->AddRenderable(new Cow(graph->getRandomWaypoint()));
+	application->AddRenderable(new Rabbit(graph->getRandomWaypoint()));
 
 	//while (true){}
 	while (application->IsRunning())

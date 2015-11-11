@@ -5,7 +5,7 @@
 class Rabbit : public IGameObject
 {
 public:
-	Rabbit();
+	Rabbit(Waypoint* waypoint);
 	~Rabbit();
 
 	void Update(float deltaTime);

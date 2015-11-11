@@ -12,6 +12,7 @@ public:
 
 	void DrawGraph(FWApplication* application);
 
+	Waypoint* getRandomWaypoint();
 	std::vector<Waypoint*> getShortestPath(Waypoint* start, Waypoint* end);
 
 private:

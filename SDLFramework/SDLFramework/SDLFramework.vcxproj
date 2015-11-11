@@ -90,6 +90,7 @@
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="Waypoint.cpp" />
   </ItemGroup>
@@ -104,6 +105,7 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="IGameObject.h" />
     <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Waypoint.h" />
   </ItemGroup>

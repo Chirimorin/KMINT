@@ -5,7 +5,7 @@
 class Cow : public IGameObject
 {
 public:
-	Cow();
+	Cow(Waypoint* waypoint);
 	~Cow();
 
 	void Update(float deltaTime);
