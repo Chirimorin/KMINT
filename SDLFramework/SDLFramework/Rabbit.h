@@ -10,6 +10,9 @@ public:
 
 	void Update(float deltaTime);
 
+	void Move(Waypoint* waypoint);
+	Waypoint* getWaypoint();
+
 private:
 	Waypoint* waypoint_ = nullptr;
 };

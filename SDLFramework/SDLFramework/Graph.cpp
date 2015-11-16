@@ -35,7 +35,7 @@ Graph::Graph()
 	waypoints.at(5)->setDistance(0);
 	waypoints.at(6)->setDistance(1);*/
 
-	getShortestPath(waypoints.at(0), waypoints.at(4));
+	setShortestPath(waypoints.at(0), waypoints.at(4));
 }
 
 
@@ -83,14 +83,10 @@ void Graph::DrawGraph(FWApplication* application)
 	});
 }
 
-Waypoint* Graph::getRandomWaypoint()
+void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 {
-	return waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
-}
+	std::queue<Waypoint*> shortestPath;
 
-
-std::vector<Waypoint*> Graph::getShortestPath(Waypoint* start, Waypoint* end)
-{
 	struct GreaterThanByDistance {
 		bool operator()(Waypoint* w1,Waypoint* w2) const {
 			return w1->getDistance() > w2->getDistance();
@@ -165,12 +161,28 @@ std::vector<Waypoint*> Graph::getShortestPath(Waypoint* start, Waypoint* end)
 	// Zet de waypoints in de goede volgorde
 	std::reverse(route.begin(), route.end());
 
-	// Reset waypoint data
-	std::for_each(waypoints.begin(), waypoints.end(), [](Waypoint* w) {
+	std::for_each(waypoints.begin(), waypoints.end(), [&shortestPath](Waypoint* w) {
+		// Zet waypoints in queue
+		shortestPath.push(w);
+		
+		// Reset waypoint data
 		w->setDistance(INT_MAX);
 		w->setPreviousWaypoint(nullptr);
 		w->setIsDone(false);
 	});
+	shortestPath_ = shortestPath;
 
-	return route;
+}
+
+Waypoint* Graph::getRandomWaypoint()
+{
+	//TODO:: Rekening houden dat koe en haas niet meteen op hetzelfde waypoint komen
+	return waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+}
+
+Waypoint* Graph::getFirstWaypointShortestPath()
+{
+	Waypoint* firstWaypoint = shortestPath_.front();
+	shortestPath_.pop();
+	return firstWaypoint;
 }

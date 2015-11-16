@@ -22,8 +22,13 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	auto graph = new Graph();
-	application->AddRenderable(new Cow(graph->getRandomWaypoint()));
-	application->AddRenderable(new Rabbit(graph->getRandomWaypoint()));
+	auto cow = new Cow(graph->getRandomWaypoint());
+	auto rabbit = new Rabbit(graph->getRandomWaypoint());
+
+	graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint());
+
+	application->AddRenderable(cow);
+	application->AddRenderable(rabbit);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -41,7 +46,11 @@ int main(int args[])
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
 				case SDLK_RETURN:
-					// VERPLAATS KOE EN EVENTUEEL HAAS
+					cow->Move(graph->getFirstWaypointShortestPath()); // Verplaats koe naar het eerste volgende waypoint op het korste pad
+					if (cow->getWaypoint() == rabbit->getWaypoint()) {
+						rabbit->Move(graph->getRandomWaypoint()); // Verplaats haas naar een random waypoint
+						graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint()); // Bepaal opnieuw het korste pad tussen koe en haas
+					}
 					break;
 				default:
 					break;
