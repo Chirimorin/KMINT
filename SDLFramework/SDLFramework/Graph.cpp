@@ -35,7 +35,7 @@ Graph::Graph()
 	waypoints.at(5)->setDistance(0);
 	waypoints.at(6)->setDistance(1);*/
 
-	setShortestPath(waypoints.at(0), waypoints.at(4));
+	//setShortestPath(waypoints.at(0), waypoints.at(4));
 }
 
 
@@ -128,9 +128,9 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 
 			// TODO:: MOET NOG MET VECTOR2 ???
 			// Geschatte afstand van deze waypoint naar doel
-			int deltaX = waypoint->getPosition().x - waypoint2->getPosition().x;
-			int deltaY = waypoint->getPosition().y - waypoint2->getPosition().y;
-			int estimatedDistance = sqrt(deltaX * deltaX + deltaY * deltaY);
+			int deltaX = abs(waypoint->getPosition().x - waypoint2->getPosition().x);
+			int deltaY = abs(waypoint->getPosition().y - waypoint2->getPosition().y);
+			int estimatedDistance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
 			int distance = waypoint->getDistance() + e->getWeight() + estimatedDistance; 
 
@@ -161,9 +161,14 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 	// Zet de waypoints in de goede volgorde
 	std::reverse(route.begin(), route.end());
 
+
+	std::cout << "KORTSTE PAD: \n";
+
 	std::for_each(waypoints.begin(), waypoints.end(), [&shortestPath](Waypoint* w) {
 		// Zet waypoints in queue
 		shortestPath.push(w);
+
+		std::cout << "x: " << w->getPosition().x << " y: " << w->getPosition().y << "\n";
 		
 		// Reset waypoint data
 		w->setDistance(INT_MAX);
