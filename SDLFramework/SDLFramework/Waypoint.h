@@ -21,8 +21,8 @@ public:
 	Waypoint* getPreviousWaypoint();
 	void setPreviousWaypoint(Waypoint* waypoint);
 
-	bool getIsDone();
-	void setIsDone(bool isDone);
+	bool isDone();
+	void isDone(bool isDone);
 
 private:
 	Vector2 position;

@@ -99,9 +99,9 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 	{
 		std::cout << w << "d: " << w->getDistance() << std::endl;
 		queue.push(w);
-	});
+	});*/
 
-	std::cout << std::endl;
+	/*std::cout << std::endl;
 	std::cout << std::endl;
 
 	for (int i = 0; i < waypoints.size(); i++) {
@@ -120,7 +120,7 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 		std::vector<Edge*> edges = waypoint->getEdges();
 		std::for_each(edges.begin(), edges.end(), [waypoint, &queue](Edge* e) 
 		{
-			// Bepaalt buur waypoint
+			// Bepaal buur waypoint
 			Waypoint* waypoint2 = e->getWaypoint1();
 			if (waypoint == waypoint2) {
 				waypoint2 = e->getWaypoint2();
@@ -132,7 +132,8 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 			int deltaY = abs(waypoint->getPosition().y - waypoint2->getPosition().y);
 			int estimatedDistance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
-			int distance = waypoint->getDistance() + e->getWeight() + estimatedDistance; 
+			int distance = waypoint->getDistance() + estimatedDistance; 
+			//std::cout << "Distance: " << distance << "\n";
 
 			// Bepaalt de kleinste afstand
 			if (distance < waypoint2->getDistance()) {
@@ -141,12 +142,12 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 			}
 
 			// Voegt eventueel waypoint toe aan de queue
-			if (!waypoint2->getIsDone()) {
+			if (!waypoint2->isDone()) {
 				queue.push(waypoint2);
 			}
 		});
 
-		waypoint->setIsDone(true);
+		waypoint->isDone(true);
 	}
 
 	std::vector<Waypoint*> route;
@@ -162,18 +163,18 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 	std::reverse(route.begin(), route.end());
 
 
-	std::cout << "KORTSTE PAD: \n";
+	//std::cout << "KORTSTE PAD: \n";
 
 	std::for_each(waypoints.begin(), waypoints.end(), [&shortestPath](Waypoint* w) {
 		// Zet waypoints in queue
 		shortestPath.push(w);
 
-		std::cout << "x: " << w->getPosition().x << " y: " << w->getPosition().y << "\n";
+		//std::cout << "x: " << w->getPosition().x << " y: " << w->getPosition().y << "\n";
 		
 		// Reset waypoint data
 		w->setDistance(INT_MAX);
 		w->setPreviousWaypoint(nullptr);
-		w->setIsDone(false);
+		w->isDone(false);
 	});
 	shortestPath_ = shortestPath;
 

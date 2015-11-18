@@ -2,12 +2,12 @@
 
 Waypoint::Waypoint()
 {
-	distance_ = INT_MAX;
-	isDone_ = false;
 }
 
 Waypoint::Waypoint(float x, float y)
 {
+	distance_ = INT_MAX;
+	isDone_ = false;
 	position = Vector2(x, y);
 }
 
@@ -52,12 +52,12 @@ void Waypoint::setPreviousWaypoint(Waypoint* waypoint)
 	previousWaypoint_ = waypoint;
 }
 
-bool Waypoint::getIsDone()
+bool Waypoint::isDone()
 {
 	return isDone_;
 }
 
-void Waypoint::setIsDone(bool isDone)
+void Waypoint::isDone(bool isDone)
 {
 	isDone_ = isDone;
 }
