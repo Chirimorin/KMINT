@@ -118,7 +118,7 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 		queue.pop();
 
 		std::vector<Edge*> edges = waypoint->getEdges();
-		std::for_each(edges.begin(), edges.end(), [waypoint, &queue](Edge* e) 
+		std::for_each(edges.begin(), edges.end(), [waypoint, &queue, end](Edge* e) 
 		{
 			// Bepaal buur waypoint
 			Waypoint* waypoint2 = e->getWaypoint1();
@@ -126,20 +126,38 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 				waypoint2 = e->getWaypoint2();
 			}
 
-			// TODO:: MOET NOG MET VECTOR2 ???
-			// Geschatte afstand van deze waypoint naar doel
-			int deltaX = abs(waypoint->getPosition().x - waypoint2->getPosition().x);
-			int deltaY = abs(waypoint->getPosition().y - waypoint2->getPosition().y);
-			int estimatedDistance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+			// f(n) = g(n) + h(n)
+			// f(n)	geschatte totale afstand van S naar T via n
+			// g(n)	afgelegde weg van S naar n
+			// h(n)	geschatte af te leggen weg van n naar T
 
-			int distance = waypoint->getDistance() + estimatedDistance; 
-			//std::cout << "Distance: " << distance << "\n";
+			// Inventariseer alle buren, behalve die waar je al geweest bent
+			// Kijk naar de kleinste schatting
+
+
+
+			// TODO:: MOET NOG MET VECTOR2 ???
+
+			// Afstand naar het volgende waypoint ( g(n) )
+			double deltaX = abs(waypoint->getPosition().x - waypoint2->getPosition().x);
+			double deltaY = abs(waypoint->getPosition().y - waypoint2->getPosition().y);
+			double distanceToNextWaypoint = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+			
+			// Geschatte afstand van deze waypoint naar doel ( h(n) )
+			deltaX = abs(waypoint2->getPosition().x - end->getPosition().x);
+			deltaY = abs(waypoint2->getPosition().y - end->getPosition().y);
+			double estimatedDistance = sqrt((deltaX * deltaX) + (deltaY * deltaY));
+
+			// Geschatte totale afstand ( f(n) )
+			//double distance = distanceToNextWaypoint + estimatedDistance;
+			double distance = 5;
 
 			// Bepaalt de kleinste afstand
 			if (distance < waypoint2->getDistance()) {
 				waypoint2->setDistance(distance);
 				waypoint2->setPreviousWaypoint(waypoint);
 			}
+			
 
 			// Voegt eventueel waypoint toe aan de queue
 			if (!waypoint2->isDone()) {
