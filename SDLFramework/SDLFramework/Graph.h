@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <queue>
+#include <stack>
 class FWApplication;
 class Edge;
 class Waypoint;
@@ -21,8 +21,7 @@ public:
 private:
 	std::vector<Edge*> edges;
 	std::vector<Waypoint*> waypoints;
-
-	std::queue<Waypoint*> shortestPath_;
+	std::stack<Waypoint*> shortestPath_;
 };
 
 

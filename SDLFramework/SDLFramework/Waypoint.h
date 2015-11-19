@@ -15,14 +15,11 @@ public:
 
 	std::vector<Edge*> getEdges();
 
-	int getDistance();
-	void setDistance(int distance);
+	float getDistance();
+	void setDistance(Waypoint* endPoint);
 
 	Waypoint* getPreviousWaypoint();
 	void setPreviousWaypoint(Waypoint* waypoint);
-
-	bool isDone();
-	void isDone(bool isDone);
 
 private:
 	Vector2 position;
@@ -30,8 +27,7 @@ private:
 	std::vector<Edge*> edges;
 
 	// Voor het bepalen van het kortste pad
-	int distance_;
+	float distance_;
 	Waypoint* previousWaypoint_ = nullptr;
-	bool isDone_;
 };
 

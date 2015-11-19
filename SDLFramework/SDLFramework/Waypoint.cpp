@@ -1,4 +1,5 @@
 #include "Waypoint.h"
+#include <limits>
 
 Waypoint::Waypoint()
 {
@@ -6,14 +7,12 @@ Waypoint::Waypoint()
 
 Waypoint::Waypoint(float x, float y)
 {
-	distance_ = INT_MAX;
-	isDone_ = false;
+	distance_ = std::numeric_limits<float>::infinity();
 	position = Vector2(x, y);
 }
 
 Waypoint::~Waypoint()
 {
-	delete previousWaypoint_;
 	previousWaypoint_ = nullptr;
 }
 
@@ -32,14 +31,15 @@ std::vector<Edge*> Waypoint::getEdges()
 	return edges;
 }
 
-int Waypoint::getDistance()
+float Waypoint::getDistance()
 {
 	return distance_;
 }
 
-void Waypoint::setDistance(int distance)
+void Waypoint::setDistance(Waypoint* endPoint)
 {
-	distance_ = distance;
+	distance_ = Magnitude(position - endPoint->getPosition());
+	previousWaypoint_ = nullptr;
 }
 
 Waypoint* Waypoint::getPreviousWaypoint()
@@ -50,14 +50,4 @@ Waypoint* Waypoint::getPreviousWaypoint()
 void Waypoint::setPreviousWaypoint(Waypoint* waypoint)
 {
 	previousWaypoint_ = waypoint;
-}
-
-bool Waypoint::isDone()
-{
-	return isDone_;
-}
-
-void Waypoint::isDone(bool isDone)
-{
-	isDone_ = isDone;
 }
