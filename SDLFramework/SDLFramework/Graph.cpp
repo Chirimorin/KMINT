@@ -97,8 +97,7 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 
 	std::priority_queue<Waypoint*, std::vector<Waypoint*>, GreaterThanByDistance> queue;
 
-	std::for_each(waypoints.begin(), waypoints.end(), [end](Waypoint* w)
-	{
+	std::for_each(waypoints.begin(), waypoints.end(), [end](Waypoint* w) {
 		w->setDistance(end);
 	});
 
@@ -120,15 +119,14 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 				newPoint = e->getWaypoint2();
 
 			if (!distances.count(newPoint))
-			{
 				queue.push(newPoint);
-			}
 
 			float distanceFromStart = e->getWeight() + distances[current];
 			std::cout << current << ": " << distanceFromStart << std::endl;
 
-			if ((distances.count(newPoint) && distanceFromStart < distances[newPoint]) ||
-				!distances.count(newPoint))
+			if ((distances.count(newPoint) && 
+				 distanceFromStart < distances[newPoint]) ||
+				 !distances.count(newPoint))
 			{
 				distances[newPoint] = distanceFromStart;
 				newPoint->setPreviousWaypoint(current);
@@ -141,8 +139,7 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 	shortestPath_.empty();
 	Waypoint* current = end;
 
-	while (current)
-	{
+	while (current != start) {
 		std::cout << current << ": " << current->getDistance() << std::endl;
 		shortestPath_.push(current);
 		current = current->getPreviousWaypoint();
