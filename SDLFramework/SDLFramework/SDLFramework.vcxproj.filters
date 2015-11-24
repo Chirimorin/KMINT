@@ -12,6 +12,9 @@
     <Filter Include="Week1">
       <UniqueIdentifier>{6469432c-2a1e-411f-a745-f6b8fe556dad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Week2">
+      <UniqueIdentifier>{e2f34c98-6e5a-416d-848e-69462ebec351}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -40,6 +43,12 @@
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Week1</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="Pill.cpp">
+      <Filter>Week2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +83,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pill.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
