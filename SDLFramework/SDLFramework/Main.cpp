@@ -22,8 +22,8 @@ int main(int args[])
 	application->SetColor(Color(255, 10, 40, 255));
 	
 	auto graph = new Graph();
-	auto cow = new Cow(graph->getRandomWaypoint());
-	auto rabbit = new Rabbit(graph->getRandomWaypoint());
+	auto cow = new Cow(graph->getRandomWaypoint(nullptr));
+	auto rabbit = new Rabbit(graph->getRandomWaypoint(cow->getWaypoint()));
 
 	graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint());
 
@@ -48,7 +48,7 @@ int main(int args[])
 				case SDLK_RETURN:
 					cow->Move(graph->getFirstWaypointShortestPath()); // Verplaats koe naar het eerste volgende waypoint op het korste pad
 					if (cow->getWaypoint() == rabbit->getWaypoint()) {
-						rabbit->Move(graph->getRandomWaypoint()); // Verplaats haas naar een random waypoint
+						rabbit->Move(graph->getRandomWaypoint(cow->getWaypoint())); // Verplaats haas naar een random waypoint
 						graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint()); // Bepaal opnieuw het korste pad tussen koe en haas
 					}
 					break;

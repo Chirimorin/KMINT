@@ -249,10 +249,15 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 
 }
 
-Waypoint* Graph::getRandomWaypoint()
+Waypoint* Graph::getRandomWaypoint(Waypoint* occupiedWaypoint)
 {
 	//TODO:: Rekening houden dat koe en haas niet meteen op hetzelfde waypoint komen
-	return waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+
+	Waypoint* randomWaypoint = waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+	while (randomWaypoint == occupiedWaypoint) {
+		randomWaypoint = waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+	}
+	return randomWaypoint;
 }
 
 Waypoint* Graph::getFirstWaypointShortestPath()

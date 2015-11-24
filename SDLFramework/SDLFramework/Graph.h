@@ -15,7 +15,7 @@ public:
 
 	void setShortestPath(Waypoint* start, Waypoint* end);
 
-	Waypoint* getRandomWaypoint();
+	Waypoint* getRandomWaypoint(Waypoint* occupiedWaypoint);
 	Waypoint* getFirstWaypointShortestPath();
 
 private:
