@@ -14,8 +14,8 @@ public:
 	void DrawGraph(FWApplication* application);
 
 	void setShortestPath(Waypoint* start, Waypoint* end);
-
-	Waypoint* getRandomWaypoint(Waypoint* occupiedWaypoint);
+	
+	Waypoint* getRandomWaypoint(std::vector<Waypoint*> occupiedWaypoints);
 	Waypoint* getFirstWaypointShortestPath();
 
 private:

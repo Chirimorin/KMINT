@@ -2,6 +2,7 @@
 #include "FWApplication.h"
 #include <SDL_rect.h>
 
+#include "State.h"
 
 class IGameObject
 {
@@ -204,6 +205,8 @@ public:
 
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
 
+	virtual void setState(State* state) { state_ = state; };
+
 protected:
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
@@ -212,6 +215,8 @@ protected:
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
 	//Color mColor;
+
+	State* state_ = nullptr;
 
 private:
 

@@ -7,6 +7,8 @@
 #include "Graph.h"
 #include "Cow.h"
 #include "Rabbit.h"
+#include "Pill.h"
+#include "Weapon.h"
 
 int main(int args[])
 {
@@ -20,15 +22,30 @@ int main(int args[])
 	
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
-	
-	auto graph = new Graph();
-	auto cow = new Cow(graph->getRandomWaypoint(nullptr));
-	auto rabbit = new Rabbit(graph->getRandomWaypoint(cow->getWaypoint()));
 
+	auto graph = new Graph();
+
+	std::vector<Waypoint*> occupiedWaypoints;
+	
+	auto cow = new Cow(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(cow->getWaypoint());
+
+	auto rabbit = new Rabbit(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(rabbit->getWaypoint());
+
+	auto  pill = new Pill(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(pill->getWaypoint());
+
+	auto weapon = new Weapon(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(pill->getWaypoint());
+	
 	graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint());
 
 	application->AddRenderable(cow);
 	application->AddRenderable(rabbit);
+
+	application->AddRenderable(pill);
+	application->AddRenderable(weapon);
 
 	//while (true){}
 	while (application->IsRunning())
@@ -48,7 +65,14 @@ int main(int args[])
 				case SDLK_RETURN:
 					cow->Move(graph->getFirstWaypointShortestPath()); // Verplaats koe naar het eerste volgende waypoint op het korste pad
 					if (cow->getWaypoint() == rabbit->getWaypoint()) {
-						rabbit->Move(graph->getRandomWaypoint(cow->getWaypoint())); // Verplaats haas naar een random waypoint
+						
+						std::vector<Waypoint*> occupiedWaypoints;
+						occupiedWaypoints.push_back(cow->getWaypoint());
+						occupiedWaypoints.push_back(rabbit->getWaypoint());
+						occupiedWaypoints.push_back(pill->getWaypoint());
+						occupiedWaypoints.push_back(weapon->getWaypoint());
+						
+						rabbit->Move(graph->getRandomWaypoint(occupiedWaypoints)); // Verplaats haas naar een random waypoint
 						graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint()); // Bepaal opnieuw het korste pad tussen koe en haas
 					}
 					break;

@@ -1,8 +1,16 @@
 #include "Weapon.h"
 
-Weapon::Weapon() : IGameObject()
+Weapon::Weapon(Waypoint* waypoint) : IGameObject()
 {
+	waypoint_ = waypoint;
 	mTexture = mApplication->LoadTexture("gun.bmp");
+
+	// TODO: moet size van de texture zijn
+	mWidth = 128;
+	mHeight = 128;
+
+	mX = waypoint_->getPosition().x;
+	mY = waypoint_->getPosition().y;
 }
 
 Weapon::~Weapon()
@@ -12,4 +20,9 @@ Weapon::~Weapon()
 void Weapon::Update(float deltaTime)
 {
 
+}
+
+Waypoint* Weapon::getWaypoint()
+{
+	return waypoint_;
 }

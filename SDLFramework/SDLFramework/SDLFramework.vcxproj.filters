@@ -50,6 +50,27 @@
     <ClCompile Include="Pill.cpp">
       <Filter>Week2</Filter>
     </ClCompile>
+    <ClCompile Include="WanderingStateCow.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="FindPillState.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackRabbitState.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderingStateRabbit.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCowState.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
+    <ClCompile Include="FindWeaponState.cpp">
+      <Filter>Week2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -89,6 +110,27 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Pill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderingStateCow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindPillState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackRabbitState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderingStateRabbit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FindWeaponState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackCowState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
