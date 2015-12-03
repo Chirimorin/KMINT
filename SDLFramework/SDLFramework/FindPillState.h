@@ -1,7 +1,7 @@
 #pragma once
-#include "State.h"
+#include "BaseState.h"
 
-class FindPillState : public State
+class FindPillState : public BaseState
 {
 public:
 	FindPillState();

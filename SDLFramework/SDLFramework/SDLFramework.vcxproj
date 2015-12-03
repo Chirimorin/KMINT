@@ -120,7 +120,7 @@
     <ClInclude Include="Pill.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="State.h" />
+    <ClInclude Include="BaseState.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="WanderingStateCow.h" />
     <ClInclude Include="WanderingStateRabbit.h" />

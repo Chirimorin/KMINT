@@ -1,11 +1,11 @@
-#include "State.h"
+#include "BaseState.h"
 
-State::State()
+BaseState::BaseState()
 {
 }
 
-State::~State()
+BaseState::~BaseState()
 {
 }
 
-void State::Move(IGameObject* obj) { }
+void BaseState::Move(IGameObject* obj) { }

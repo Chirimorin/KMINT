@@ -2,11 +2,11 @@
 
 #include "IGameObject.h"
 
-class State
+class BaseState
 {
 public:
-	State();
-	~State();
+	BaseState();
+	virtual ~BaseState();
 
 	virtual void Move(IGameObject* obj);
 };

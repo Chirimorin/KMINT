@@ -2,11 +2,15 @@
 #include "FWApplication.h"
 #include <SDL_rect.h>
 
-#include "State.h"
+class BaseState;
 
 class IGameObject
 {
 public:
+	virtual ~IGameObject()
+	{
+	}
+
 	IGameObject() : mIsActive(true) { mApplication = FWApplication::GetInstance(); }
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -205,18 +209,17 @@ public:
 
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
 
-	virtual void setState(State* state) { state_ = state; };
+	virtual void setState(BaseState* state) { state_ = state; };
 
 protected:
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
+	BaseState* state_;
 	
 	uint32_t mX, mY;
 	uint32_t mWidth, mHeight;
 	bool mIsActive;
 	//Color mColor;
-
-	State* state_ = nullptr;
 
 private:
 

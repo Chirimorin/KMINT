@@ -1,7 +1,7 @@
 #pragma once
-#include "State.h"
+#include "BaseState.h"
 
-class WanderingStateRabbit : public State
+class WanderingStateRabbit : public BaseState
 {
 public:
 	WanderingStateRabbit();
