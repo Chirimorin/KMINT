@@ -7,6 +7,7 @@
 #include <SDL_events.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
+#include <algorithm>
 
 FWApplication * FWApplication::mInstance;
 FWApplication::FWApplication(int offsetX, int offsetY, int width, int height)
@@ -321,6 +322,11 @@ void FWApplication::DrawRect(int startPosX, int startPosY, int width, int height
 void FWApplication::AddRenderable(IGameObject * renderable)
 {
 	mGameObjects.push_back(renderable);
+}
+
+void FWApplication::RemoveRenderable(IGameObject* renderable)
+{
+	mGameObjects.erase(std::remove(mGameObjects.begin(), mGameObjects.end(), renderable), mGameObjects.end());
 }
 
 uint32_t FWApplication::GetTimeSinceStartedMS() const

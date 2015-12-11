@@ -11,6 +11,7 @@ public:
 	void Update(float deltaTime);
 
 	Waypoint* getWaypoint();
+	void setWaypoint(Waypoint* waypoint);
 
 private:
 	Waypoint* waypoint_ = nullptr;

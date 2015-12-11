@@ -1,8 +1,10 @@
 #include "Cow.h"
 
 #include <iostream>
+#include <SDL.h>
+#include "WanderingStateCow.h"
 
-Cow::Cow(Waypoint* waypoint) : IGameObject()
+Cow::Cow(Waypoint* waypoint) : Entity()
 {
 	waypoint_ = waypoint;
 	mTexture = mApplication->LoadTexture("cow.bmp");
@@ -14,6 +16,7 @@ Cow::Cow(Waypoint* waypoint) : IGameObject()
 	mX = waypoint_->getPosition().x;
 	mY = waypoint_->getPosition().y;
 	
+	state_ = new WanderingStateCow();
 
 	std::cout << "Positie koe x: " << mX << " y: " << mY << "\n";
 }
@@ -24,18 +27,14 @@ Cow::~Cow()
 
 void Cow::Update(float deltaTime)
 {
-	
+
 }
 
-void Cow::Move(Waypoint* waypoint)
+void Cow::Move(Graph* graph)
 {
-	waypoint_ = waypoint;
-	mX = waypoint_->getPosition().x;
-	mY = waypoint_->getPosition().y;
-	std::cout << "x: " << mX << " y: " << mY << "\n";
-}
-
-Waypoint* Cow::getWaypoint()
-{
-	return waypoint_;
+	state_->Move(this, graph);
+	//waypoint_ = waypoint;
+	//mX = waypoint_->getPosition().x;
+	//mY = waypoint_->getPosition().y;
+	//std::cout << "x: " << mX << " y: " << mY << "\n";
 }

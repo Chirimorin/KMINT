@@ -1,14 +1,14 @@
 #include "WanderingStateRabbit.h"
 #include "FindWeaponState.h"
 
-WanderingStateRabbit::WanderingStateRabbit()
+WanderingStateRabbit::WanderingStateRabbit() : BaseState(255, 255, 255)
 {
 }
 WanderingStateRabbit::~WanderingStateRabbit()
 {
 }
 
-void WanderingStateRabbit::Move(IGameObject* obj)
+void WanderingStateRabbit::Move(Entity* obj, Graph* graph)
 {
 	/*if () {
 		obj->setState(new FindWeaponState());

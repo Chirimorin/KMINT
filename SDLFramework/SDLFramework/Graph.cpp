@@ -3,14 +3,17 @@
 #include "Waypoint.h"
 #include "FWApplication.h"
 #include "Random.h"
+#include "Pill.h"
 #include <algorithm>
 #include <queue>
 
 #include <iostream>
 #include <unordered_map>
 
-Graph::Graph()
+Graph::Graph(FWApplication* application)
 {
+	application_ = application;
+
 	waypoints.push_back(new Waypoint(125.0f, 115.0f));
 	waypoints.push_back(new Waypoint(423.0f, 88.0f));
 	waypoints.push_back(new Waypoint(203.0f, 199.0f));
@@ -43,15 +46,15 @@ Graph::~Graph()
 	});
 }
 
-void Graph::DrawGraph(FWApplication* application)
+void Graph::DrawGraph()
 {
-	application->SetColor(Color(0, 0, 128, 255));
-	std::for_each(edges.begin(), edges.end(), [application](Edge* e)
+	application_->SetColor(Color(0, 0, 128, 255));
+	std::for_each(edges.begin(), edges.end(), [&](Edge* e)
 	{
 		Vector2 pos1 = e->getWaypoint1()->getPosition();
 		Vector2 pos2 = e->getWaypoint2()->getPosition();
 
-		application->DrawLine(
+		application_->DrawLine(
 			static_cast<int>(pos1.x), 
 			static_cast<int>(pos1.y), 
 			static_cast<int>(pos2.x), 
@@ -59,12 +62,12 @@ void Graph::DrawGraph(FWApplication* application)
 			);
 	});
 
-	application->SetColor(Color(0, 0, 0, 255));
+	application_->SetColor(Color(0, 0, 0, 255));
 
-	std::for_each(waypoints.begin(), waypoints.end(), [application](Waypoint* w) 
+	std::for_each(waypoints.begin(), waypoints.end(), [&](Waypoint* w) 
 	{
 		Vector2 pos = w->getPosition();
-		application->DrawRect(
+		application_->DrawRect(
 			static_cast<int>(pos.x) - 5, 
 			static_cast<int>(pos.y) - 5,
 			10, 
@@ -150,4 +153,9 @@ Waypoint* Graph::getFirstWaypointShortestPath()
 	Waypoint* firstWaypoint = shortestPath_.top();
 	shortestPath_.pop();
 	return firstWaypoint;
+}
+
+void Graph::movePill()
+{
+	pill_->setWaypoint(getRandomWaypoint(std::vector<Waypoint*> {pill_->getWaypoint()}));
 }

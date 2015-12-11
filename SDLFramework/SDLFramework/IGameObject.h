@@ -209,12 +209,10 @@ public:
 
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
 
-	virtual void setState(BaseState* state) { state_ = state; };
 
 protected:
 	FWApplication * mApplication;
 	SDL_Texture * mTexture;
-	BaseState* state_;
 	
 	uint32_t mX, mY;
 	uint32_t mWidth, mHeight;

@@ -71,6 +71,9 @@
     <ClCompile Include="FindWeaponState.cpp">
       <Filter>Week2</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Week1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -131,6 +134,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="BaseState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

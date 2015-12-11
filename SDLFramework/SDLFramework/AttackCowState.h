@@ -7,6 +7,6 @@ public:
 	AttackCowState();
 	~AttackCowState();
 
-	void Move(IGameObject* obj) override;
+	void Move(Entity* obj, Graph* graph) override;
 };
 
