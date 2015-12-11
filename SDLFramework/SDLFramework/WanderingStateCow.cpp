@@ -1,10 +1,9 @@
 #include "WanderingStateCow.h"
 #include "FindPillState.h"
-#include "Graph.h"
 #include "Entity.h"
+#include "Graph.h"
 #include "Waypoint.h"
 #include "Random.h"
-#include <iostream>
 
 WanderingStateCow::WanderingStateCow() : BaseState(255,255,255)
 {
@@ -20,12 +19,10 @@ void WanderingStateCow::Move(Entity* obj, Graph* graph)
 	std::vector<Edge*> edges = waypoint->getEdges();
 	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
 
-	if (Random::getRandomNumber(0, 1))
-	{
+	if (Random::getRandomNumber(0, 1)) {
 		obj->MoveTo(edge->getWaypoint1());
 	}
-	else
-	{
+	else {
 		obj->MoveTo(edge->getWaypoint2());
 	}
 

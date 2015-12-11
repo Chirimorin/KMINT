@@ -26,3 +26,11 @@ Waypoint* Weapon::getWaypoint()
 {
 	return waypoint_;
 }
+
+void Weapon::setWaypoint(Waypoint* waypoint)
+{
+	waypoint_ = waypoint;
+
+	mX = waypoint_->getPosition().x;
+	mY = waypoint_->getPosition().y;
+}

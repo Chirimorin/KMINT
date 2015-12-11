@@ -1,9 +1,7 @@
 #pragma once
 #include "IGameObject.h"
-#include "Waypoint.h"
 #include "Entity.h"
-
-class Graph;
+#include "Waypoint.h"
 
 class Cow : public Entity
 {

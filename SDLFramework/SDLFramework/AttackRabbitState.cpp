@@ -2,7 +2,6 @@
 #include "WanderingStateCow.h"
 #include "Graph.h"
 #include "Entity.h"
-#include "Pill.h"
 #include "Rabbit.h"
 #include <iostream>
 
@@ -20,7 +19,7 @@ void AttackRabbitState::Move(Entity* obj, Graph* graph)
 	obj->MoveTo(graph->getFirstWaypointShortestPath());
 
 	if (obj->getWaypoint() == graph->getRabbit()->getWaypoint()) {
-		std::cout << "Caught the rabbit!\n";
+		std::cout << "Cow: Caught the rabbit!\n";
 		obj->setState(new WanderingStateCow());
 	}
 }

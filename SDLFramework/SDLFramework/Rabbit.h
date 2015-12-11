@@ -1,19 +1,16 @@
 #pragma once
 #include "IGameObject.h"
+#include "Entity.h"
 #include "Waypoint.h"
 
-class Rabbit : public IGameObject
+class Rabbit : public Entity
 {
 public:
 	Rabbit(Waypoint* waypoint);
 	~Rabbit();
 
-	void Update(float deltaTime);
+	void Update(float deltaTime) override;
 
-	void Move(Waypoint* waypoint);
-	Waypoint* getWaypoint();
-
-private:
-	Waypoint* waypoint_ = nullptr;
+	void Move(Graph* graph) override;
 };
 

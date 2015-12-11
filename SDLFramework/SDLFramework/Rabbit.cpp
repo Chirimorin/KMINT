@@ -1,8 +1,9 @@
 #include "Rabbit.h"
+#include "WanderingStateRabbit.h"
 
 #include <iostream>
 
-Rabbit::Rabbit(Waypoint* waypoint) : IGameObject()
+Rabbit::Rabbit(Waypoint* waypoint) : Entity()
 {
 	waypoint_ = waypoint;
 	mTexture = mApplication->LoadTexture("rabbit.bmp");
@@ -13,6 +14,9 @@ Rabbit::Rabbit(Waypoint* waypoint) : IGameObject()
 
 	mX = waypoint_->getPosition().x;
 	mY = waypoint_->getPosition().y;
+
+	state_ = new WanderingStateRabbit();
+
 	std::cout << "Positie haas x: " << mX << " y: " << mY << "\n";
 }
 
@@ -25,16 +29,7 @@ void Rabbit::Update(float deltaTime)
 
 }
 
-void Rabbit::Move(Waypoint* waypoint)
+void Rabbit::Move(Graph* graph)
 {
-	waypoint_ = waypoint;
-	mX = waypoint_->getPosition().x;
-	mY = waypoint_->getPosition().y;
-
-	std::cout << "Move haas x: " << mX << " y: " << mY << "\n";
-}
-
-Waypoint* Rabbit::getWaypoint()
-{
-	return waypoint_;
+	state_->Move(this, graph);
 }

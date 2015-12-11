@@ -28,6 +28,7 @@ public:
 
 	void setWeapon(Weapon* weapon) { weapon_ = weapon; }
 	Weapon* getWeapon() { return weapon_; }
+	void moveWeapon();
 
 	void setCow(Cow* cow) { cow_ = cow; }
 	Cow* getCow() { return cow_; }

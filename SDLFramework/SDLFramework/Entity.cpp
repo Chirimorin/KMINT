@@ -2,11 +2,9 @@
 #include "Waypoint.h"
 #include "BaseState.h"
 
-
 Entity::Entity()
 {
 }
-
 
 Entity::~Entity()
 {

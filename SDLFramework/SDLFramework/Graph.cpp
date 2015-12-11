@@ -4,6 +4,7 @@
 #include "FWApplication.h"
 #include "Random.h"
 #include "Pill.h"
+#include "Weapon.h"
 #include <algorithm>
 #include <queue>
 
@@ -158,4 +159,9 @@ Waypoint* Graph::getFirstWaypointShortestPath()
 void Graph::movePill()
 {
 	pill_->setWaypoint(getRandomWaypoint(std::vector<Waypoint*> {pill_->getWaypoint()}));
+}
+
+void Graph::moveWeapon()
+{
+	weapon_->setWaypoint(getRandomWaypoint(std::vector<Waypoint*> {weapon_->getWaypoint()}));
 }

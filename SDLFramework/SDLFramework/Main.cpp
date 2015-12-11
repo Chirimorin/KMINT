@@ -68,7 +68,8 @@ int main(int args[])
 				switch (event.key.keysym.sym){
 				case SDLK_RETURN:
 					cow->Move(graph); // Laat de koe lopen
-					if (cow->getWaypoint() == rabbit->getWaypoint()) {
+					rabbit->Move(graph); // Laat de haas lopen
+					/*if (cow->getWaypoint() == rabbit->getWaypoint()) {
 						
 						std::vector<Waypoint*> occupiedWaypoints;
 						occupiedWaypoints.push_back(cow->getWaypoint());
@@ -77,7 +78,7 @@ int main(int args[])
 						occupiedWaypoints.push_back(weapon->getWaypoint());
 						
 						rabbit->Move(graph->getRandomWaypoint(occupiedWaypoints)); // Verplaats haas naar een random waypoint
-					}
+					}*/
 					break;
 				default:
 					break;
