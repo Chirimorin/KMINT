@@ -15,11 +15,22 @@ AttackRabbitState::~AttackRabbitState()
 
 void AttackRabbitState::Move(Entity* obj, Graph* graph)
 {
-	graph->setShortestPath(obj->getWaypoint(), graph->getRabbit()->getWaypoint());
-	obj->MoveTo(graph->getFirstWaypointShortestPath());
+	if (graph->setShortestPath(obj->getWaypoint(), graph->getRabbit()->getWaypoint()))
+	{
+		obj->MoveTo(graph->getFirstWaypointShortestPath());
+	}
 
 	if (obj->getWaypoint() == graph->getRabbit()->getWaypoint()) {
-		std::cout << "Cow: Caught the rabbit!\n";
+		if (graph->getRabbit()->isAttacking())
+		{
+			std::cout << "Cow: Lost to the rabbit!\n";
+		}
+		else
+		{
+			std::cout << "Cow: Caught the rabbit!\n";
+		}
+		
 		obj->setState(new WanderingStateCow());
+		graph->getRabbit()->resetState();
 	}
 }

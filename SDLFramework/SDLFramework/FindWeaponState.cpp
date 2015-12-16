@@ -15,8 +15,10 @@ FindWeaponState::~FindWeaponState()
 
 void FindWeaponState::Move(Entity* obj, Graph* graph)
 {
-	graph->setShortestPath(obj->getWaypoint(), graph->getWeapon()->getWaypoint());
-	obj->MoveTo(graph->getFirstWaypointShortestPath());
+	if (graph->setShortestPath(obj->getWaypoint(), graph->getWeapon()->getWaypoint()))
+	{
+		obj->MoveTo(graph->getFirstWaypointShortestPath());
+	}
 
 	if (obj->getWaypoint() == graph->getWeapon()->getWaypoint()) {
 		graph->moveWeapon();

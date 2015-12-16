@@ -13,7 +13,7 @@ Rabbit::Rabbit(Waypoint* waypoint) : Entity()
 
 	MoveTo(waypoint);
 
-	state_ = new WanderingStateRabbit();
+	resetState();
 }
 
 Rabbit::~Rabbit()
@@ -34,4 +34,9 @@ void Rabbit::MoveTo(Waypoint* waypoint)
 {
 	Entity::MoveTo(waypoint);
 	mX += mWidth/2;
+}
+
+void Rabbit::resetState()
+{
+	setState(new WanderingStateRabbit());
 }

@@ -15,8 +15,10 @@ FindPillState::~FindPillState()
 
 void FindPillState::Move(Entity* obj, Graph* graph)
 {
-	graph->setShortestPath(obj->getWaypoint(), graph->getPill()->getWaypoint());
-	obj->MoveTo(graph->getFirstWaypointShortestPath());
+	if (graph->setShortestPath(obj->getWaypoint(), graph->getPill()->getWaypoint()))
+	{
+		obj->MoveTo(graph->getFirstWaypointShortestPath());
+	}
 
 	if (obj->getWaypoint() == graph->getPill()->getWaypoint()) {
 		graph->movePill();

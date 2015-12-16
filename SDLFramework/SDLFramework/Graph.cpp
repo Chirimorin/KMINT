@@ -78,8 +78,11 @@ void Graph::DrawGraph()
 	});
 }
 
-void Graph::setShortestPath(Waypoint* start, Waypoint* end)
+bool Graph::setShortestPath(Waypoint* start, Waypoint* end)
 {
+	if (start == end)
+		return false;
+
 	std::unordered_map<Waypoint*, float> distances;
 	distances[start] = 0.0f;
 
@@ -138,6 +141,8 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 		shortestPath_.push(current);
 		current = current->getPreviousWaypoint();
 	}
+
+	return true;
 }
 
 Waypoint* Graph::getRandomWaypoint(std::vector<Waypoint*> occupiedWaypoints)

@@ -27,7 +27,7 @@ void WanderingStateRabbit::Move(Entity* obj, Graph* graph)
 		obj->MoveTo(edge->getWaypoint2());
 	}
 
-	if (graph->getCow()->getWaypoint() == waypoint) {
+	if (graph->getCow()->isAttacking()) {
 		std::cout << "Rabbit: Looking for weapon!\n";
 		obj->setState(new FindWeaponState());
 	}

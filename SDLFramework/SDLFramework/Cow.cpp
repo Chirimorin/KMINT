@@ -14,7 +14,7 @@ Cow::Cow(Waypoint* waypoint) : Entity()
 
 	MoveTo(waypoint);
 	
-	state_ = new WanderingStateCow();
+	resetState();
 }
 
 Cow::~Cow()
@@ -35,4 +35,9 @@ void Cow::MoveTo(Waypoint* waypoint)
 {
 	Entity::MoveTo(waypoint);
 	mX -= mWidth/2;
+}
+
+void Cow::resetState()
+{
+	setState(new WanderingStateCow());
 }

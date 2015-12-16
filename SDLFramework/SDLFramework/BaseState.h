@@ -12,6 +12,7 @@ public:
 
 	virtual void Move(Entity* obj, Graph* graph);
 	void setColor(SDL_Texture* texture);
+	virtual bool isAttacking() { return false; }
 protected:
 	Uint8 r_;
 	Uint8 g_;

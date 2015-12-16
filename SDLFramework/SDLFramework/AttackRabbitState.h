@@ -8,5 +8,6 @@ public:
 	~AttackRabbitState();
 
 	void Move(Entity* obj, Graph* graph) override;
+	bool isAttacking() override { return true; }
 };
 

@@ -13,5 +13,7 @@ public:
 
 	void Move(Graph* graph) override;
 	void MoveTo(Waypoint* waypoint) override;
+
+	void resetState() override;
 };
 

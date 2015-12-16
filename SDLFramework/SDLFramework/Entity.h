@@ -1,5 +1,6 @@
 #pragma once
 #include "IGameObject.h"
+#include "BaseState.h"
 
 class Graph;
 class Waypoint;
@@ -15,6 +16,9 @@ public:
 	Waypoint* getWaypoint() { return waypoint_; }
 
 	virtual void setState(BaseState* state);
+	virtual void resetState() = 0;
+
+	bool isAttacking() { return state_->isAttacking(); }
 protected:
 	Waypoint* waypoint_ = nullptr;
 	BaseState* state_;
