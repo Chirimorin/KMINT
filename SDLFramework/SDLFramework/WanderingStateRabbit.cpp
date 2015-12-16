@@ -5,6 +5,7 @@
 #include "Waypoint.h"
 #include "Cow.h"
 #include "Random.h"
+#include <iostream>
 
 WanderingStateRabbit::WanderingStateRabbit() : BaseState(255, 255, 255)
 {
@@ -27,6 +28,7 @@ void WanderingStateRabbit::Move(Entity* obj, Graph* graph)
 	}
 
 	if (graph->getCow()->getWaypoint() == waypoint) {
+		std::cout << "Rabbit: Looking for weapon!\n";
 		obj->setState(new FindWeaponState());
 	}
 }

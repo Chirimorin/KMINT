@@ -116,7 +116,7 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 				queue.push(newPoint);
 
 			float distanceFromStart = e->getWeight() + distances[current];
-			std::cout << current << ": " << distanceFromStart << std::endl;
+			//std::cout << current << ": " << distanceFromStart << std::endl;
 
 			if ((distances.count(newPoint) && 
 				 distanceFromStart < distances[newPoint]) ||
@@ -128,13 +128,13 @@ void Graph::setShortestPath(Waypoint* start, Waypoint* end)
 		});
 	}
 
-	std::cout << " ---------------------------------- \n";
+	//std::cout << " ---------------------------------- \n";
 
 	shortestPath_.empty();
 	Waypoint* current = end;
 
 	while (current != start) {
-		std::cout << current << ": " << current->getDistance() << std::endl;
+		//std::cout << current << ": " << current->getDistance() << std::endl;
 		shortestPath_.push(current);
 		current = current->getPreviousWaypoint();
 	}

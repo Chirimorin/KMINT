@@ -4,6 +4,7 @@
 #include "Graph.h"
 #include "Waypoint.h"
 #include "Random.h"
+#include <iostream>
 
 WanderingStateCow::WanderingStateCow() : BaseState(255,255,255)
 {
@@ -27,6 +28,7 @@ void WanderingStateCow::Move(Entity* obj, Graph* graph)
 	}
 
 	if (Random::getRandomNumber(0,4) == 4) {
+		std::cout << "Cow: Looking for pill!\n";
 		obj->setState(new FindPillState());
 	}
 }

@@ -16,8 +16,6 @@ Rabbit::Rabbit(Waypoint* waypoint) : Entity()
 	mY = waypoint_->getPosition().y;
 
 	state_ = new WanderingStateRabbit();
-
-	std::cout << "Positie haas x: " << mX << " y: " << mY << "\n";
 }
 
 Rabbit::~Rabbit()

@@ -19,7 +19,7 @@ void AttackCowState::Move(Entity* obj, Graph* graph)
 	obj->MoveTo(graph->getFirstWaypointShortestPath());
 
 	if (obj->getWaypoint() == graph->getCow()->getWaypoint()) {
-		std::cout << "Rabbit: Caught the cow!\n";
+		std::cout << "Rabbit: Attacked the cow!\n";
 		obj->setState(new WanderingStateRabbit());
 	}
 }
