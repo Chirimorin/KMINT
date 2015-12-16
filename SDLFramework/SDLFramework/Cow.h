@@ -12,5 +12,6 @@ public:
 	void Update(float deltaTime) override;
 
 	void Move(Graph* graph) override;
+	void MoveTo(Waypoint* waypoint) override;
 };
 

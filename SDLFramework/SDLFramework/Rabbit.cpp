@@ -5,15 +5,13 @@
 
 Rabbit::Rabbit(Waypoint* waypoint) : Entity()
 {
-	waypoint_ = waypoint;
 	mTexture = mApplication->LoadTexture("rabbit.bmp");
 
 	// TODO: moet size van de texture zijn
 	mWidth = 48;
 	mHeight = 48;
 
-	mX = waypoint_->getPosition().x;
-	mY = waypoint_->getPosition().y;
+	MoveTo(waypoint);
 
 	state_ = new WanderingStateRabbit();
 }
@@ -30,4 +28,10 @@ void Rabbit::Update(float deltaTime)
 void Rabbit::Move(Graph* graph)
 {
 	state_->Move(this, graph);
+}
+
+void Rabbit::MoveTo(Waypoint* waypoint)
+{
+	Entity::MoveTo(waypoint);
+	mX += mWidth/2;
 }

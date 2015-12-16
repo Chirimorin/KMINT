@@ -11,7 +11,7 @@ public:
 	~Entity();
 
 	virtual void Move(Graph* graph) {};
-	void MoveTo(Waypoint* waypoint);
+	virtual void MoveTo(Waypoint* waypoint);
 	Waypoint* getWaypoint() { return waypoint_; }
 
 	virtual void setState(BaseState* state);
