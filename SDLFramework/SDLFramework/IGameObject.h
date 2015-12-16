@@ -2,10 +2,15 @@
 #include "FWApplication.h"
 #include <SDL_rect.h>
 
+class BaseState;
 
 class IGameObject
 {
 public:
+	virtual ~IGameObject()
+	{
+	}
+
 	IGameObject() : mIsActive(true) { mApplication = FWApplication::GetInstance(); }
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -203,6 +208,7 @@ public:
 	}
 
 	virtual void SetActive(bool isActive) { mIsActive = isActive;  };
+
 
 protected:
 	FWApplication * mApplication;

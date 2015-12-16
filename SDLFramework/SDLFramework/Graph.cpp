@@ -2,11 +2,19 @@
 #include "Edge.h"
 #include "Waypoint.h"
 #include "FWApplication.h"
+#include "Random.h"
+#include "Pill.h"
+#include "Weapon.h"
 #include <algorithm>
+#include <queue>
 
+#include <iostream>
+#include <unordered_map>
 
-Graph::Graph()
+Graph::Graph(FWApplication* application)
 {
+	application_ = application;
+
 	waypoints.push_back(new Waypoint(125.0f, 115.0f));
 	waypoints.push_back(new Waypoint(423.0f, 88.0f));
 	waypoints.push_back(new Waypoint(203.0f, 199.0f));
@@ -39,15 +47,15 @@ Graph::~Graph()
 	});
 }
 
-void Graph::DrawGraph(FWApplication* application)
+void Graph::DrawGraph()
 {
-	application->SetColor(Color(0, 0, 128, 255));
-	std::for_each(edges.begin(), edges.end(), [application](Edge* e)
+	application_->SetColor(Color(0, 0, 128, 255));
+	std::for_each(edges.begin(), edges.end(), [&](Edge* e)
 	{
 		Vector2 pos1 = e->getWaypoint1()->getPosition();
 		Vector2 pos2 = e->getWaypoint2()->getPosition();
 
-		application->DrawLine(
+		application_->DrawLine(
 			static_cast<int>(pos1.x), 
 			static_cast<int>(pos1.y), 
 			static_cast<int>(pos2.x), 
@@ -55,12 +63,12 @@ void Graph::DrawGraph(FWApplication* application)
 			);
 	});
 
-	application->SetColor(Color(0, 0, 0, 255));
+	application_->SetColor(Color(0, 0, 0, 255));
 
-	std::for_each(waypoints.begin(), waypoints.end(), [application](Waypoint* w) 
+	std::for_each(waypoints.begin(), waypoints.end(), [&](Waypoint* w) 
 	{
 		Vector2 pos = w->getPosition();
-		application->DrawRect(
+		application_->DrawRect(
 			static_cast<int>(pos.x) - 5, 
 			static_cast<int>(pos.y) - 5,
 			10, 
@@ -68,4 +76,97 @@ void Graph::DrawGraph(FWApplication* application)
 			true
 			);
 	});
+}
+
+bool Graph::setShortestPath(Waypoint* start, Waypoint* end)
+{
+	if (start == end)
+		return false;
+
+	std::unordered_map<Waypoint*, float> distances;
+	distances[start] = 0.0f;
+
+	struct GreaterThanByDistance {
+		bool operator()(Waypoint* w1,Waypoint* w2) const {
+			return w1->getDistance() > w2->getDistance();
+		}
+	};
+
+	std::priority_queue<Waypoint*, std::vector<Waypoint*>, GreaterThanByDistance> queue;
+
+	std::for_each(waypoints.begin(), waypoints.end(), [end](Waypoint* w) {
+		w->setDistance(end);
+	});
+
+	queue.push(start);
+
+	while (!queue.empty())
+	{
+		Waypoint* current = queue.top();
+		queue.pop();
+
+		if (current == end)
+			break;
+
+		std::vector<Edge*> edges = current->getEdges();
+		std::for_each(edges.begin(), edges.end(), [&distances, &queue, current](Edge* e)
+		{
+			Waypoint* newPoint = e->getWaypoint1();
+			if (newPoint == current)
+				newPoint = e->getWaypoint2();
+
+			if (!distances.count(newPoint))
+				queue.push(newPoint);
+
+			float distanceFromStart = e->getWeight() + distances[current];
+			//std::cout << current << ": " << distanceFromStart << std::endl;
+
+			if ((distances.count(newPoint) && 
+				 distanceFromStart < distances[newPoint]) ||
+				 !distances.count(newPoint))
+			{
+				distances[newPoint] = distanceFromStart;
+				newPoint->setPreviousWaypoint(current);
+			}
+		});
+	}
+
+	//std::cout << " ---------------------------------- \n";
+
+	shortestPath_.empty();
+	Waypoint* current = end;
+
+	while (current != start) {
+		//std::cout << current << ": " << current->getDistance() << std::endl;
+		shortestPath_.push(current);
+		current = current->getPreviousWaypoint();
+	}
+
+	return true;
+}
+
+Waypoint* Graph::getRandomWaypoint(std::vector<Waypoint*> occupiedWaypoints)
+{
+	Waypoint* randomWaypoint = waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+	while (std::find(occupiedWaypoints.begin(), occupiedWaypoints.end(), randomWaypoint) != occupiedWaypoints.end()) {
+		randomWaypoint = waypoints.at(Random::getRandomNumber(0, waypoints.size() - 1));
+	}
+	return randomWaypoint;
+}
+
+Waypoint* Graph::getFirstWaypointShortestPath()
+{
+	Waypoint* firstWaypoint = shortestPath_.top();
+	shortestPath_.pop();
+	return firstWaypoint;
+}
+
+void Graph::movePill()
+{
+	pill_->setWaypoint(getRandomWaypoint(std::vector<Waypoint*> {pill_->getWaypoint()}));
+}
+
+void Graph::moveWeapon()
+{
+	weapon_->setWaypoint(getRandomWaypoint(std::vector<Waypoint*> {weapon_->getWaypoint()}));
 }

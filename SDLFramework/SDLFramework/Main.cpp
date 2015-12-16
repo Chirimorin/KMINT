@@ -5,6 +5,10 @@
 #include "SDL_timer.h"
 #include <time.h>
 #include "Graph.h"
+#include "Cow.h"
+#include "Rabbit.h"
+#include "Pill.h"
+#include "Weapon.h"
 
 int main(int args[])
 {
@@ -18,10 +22,36 @@ int main(int args[])
 	
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
-	
-	auto graph = new Graph();
 
-	//while (true){}
+	auto graph = new Graph(application);
+
+	std::vector<Waypoint*> occupiedWaypoints;
+	
+	auto  pill = new Pill(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(pill->getWaypoint());
+	graph->setPill(pill);
+
+	auto weapon = new Weapon(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(pill->getWaypoint());
+	graph->setWeapon(weapon);
+
+	auto cow = new Cow(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(cow->getWaypoint());
+	graph->setCow(cow);
+
+	auto rabbit = new Rabbit(graph->getRandomWaypoint(occupiedWaypoints));
+	occupiedWaypoints.push_back(rabbit->getWaypoint());
+	graph->setRabbit(rabbit);
+
+	graph->setShortestPath(cow->getWaypoint(), rabbit->getWaypoint());
+
+	application->AddRenderable(pill);
+	application->AddRenderable(weapon);
+
+	application->AddRenderable(cow);
+	application->AddRenderable(rabbit);
+
+
 	while (application->IsRunning())
 	{
 		application->StartTick();
@@ -36,7 +66,10 @@ int main(int args[])
 				break;
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym){
-
+				case SDLK_RETURN:
+					cow->Move(graph); // Laat de koe lopen
+					rabbit->Move(graph); // Laat de haas lopen
+					break;
 				default:
 					break;
 				}
@@ -46,7 +79,7 @@ int main(int args[])
 		//application->SetColor(Color(0, 0, 0, 255));
 		//application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
 
-		graph->DrawGraph(application);
+		graph->DrawGraph();
 		
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));

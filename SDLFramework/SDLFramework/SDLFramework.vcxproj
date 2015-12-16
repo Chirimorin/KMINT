@@ -84,24 +84,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AttackCowState.cpp" />
+    <ClCompile Include="AttackRabbitState.cpp" />
+    <ClCompile Include="Cow.cpp" />
     <ClCompile Include="Edge.cpp" />
+    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="FindPillState.cpp" />
+    <ClCompile Include="FindWeaponState.cpp" />
     <ClCompile Include="FWApplication.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Pill.cpp" />
+    <ClCompile Include="Rabbit.cpp" />
+    <ClCompile Include="Random.cpp" />
+    <ClCompile Include="State.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="WanderingStateCow.cpp" />
+    <ClCompile Include="WanderingStateRabbit.cpp" />
     <ClCompile Include="Waypoint.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AttackCowState.h" />
+    <ClInclude Include="AttackRabbitState.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Cow.h" />
     <ClInclude Include="Edge.h" />
+    <ClInclude Include="Entity.h" />
+    <ClInclude Include="FindPillState.h" />
+    <ClInclude Include="FindWeaponState.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="Pill.h" />
+    <ClInclude Include="Rabbit.h" />
+    <ClInclude Include="Random.h" />
+    <ClInclude Include="BaseState.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="WanderingStateCow.h" />
+    <ClInclude Include="WanderingStateRabbit.h" />
     <ClInclude Include="Waypoint.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -223,6 +223,7 @@ public:
 	/// <param name="renderable">	[in,out] If non-null, the renderable. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void AddRenderable(IGameObject * renderable);
+	void RemoveRenderable(IGameObject * renderable);
 
 	uint32_t GetTimeSinceStartedMS() const;
 
@@ -242,7 +243,6 @@ public:
 	void RenderGameObjects();
 	void Quit();
 	//void AddOnEvent(std::function<void(SDL_Event*)> func);
-
 private:
 	std::vector<IGameObject *> mGameObjects;
 	static FWApplication * mInstance;
