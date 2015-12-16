@@ -17,6 +17,7 @@ public:
 
 	virtual void setState(BaseState* state);
 	virtual void resetState() = 0;
+	virtual bool getAttacked() = 0;
 
 	bool isAttacking() { return state_->isAttacking(); }
 protected:
