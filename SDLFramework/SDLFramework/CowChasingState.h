@@ -6,5 +6,7 @@ class CowChasingState : public BaseState
 public:
 	CowChasingState();
 	~CowChasingState();
+
+	void Move(Entity* obj, Graph* graph) override;
 };
 

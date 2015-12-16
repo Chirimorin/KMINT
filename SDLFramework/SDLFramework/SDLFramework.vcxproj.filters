@@ -18,6 +18,12 @@
     <Filter Include="Source Files\graph">
       <UniqueIdentifier>{cedb1c66-ed3f-4263-961e-fba01802b2b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\States\old">
+      <UniqueIdentifier>{3819ba17-fa25-4e8d-902f-5cfa273c572b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\Cow">
+      <UniqueIdentifier>{fb773683-6c30-4be2-b948-98c6175bfa4c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -44,24 +50,6 @@
     <ClCompile Include="State.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
-    <ClCompile Include="FindPillState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="FindWeaponState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackRabbitState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackCowState.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderingStateCow.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderingStateRabbit.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="Edge.cpp">
       <Filter>Source Files\graph</Filter>
     </ClCompile>
@@ -75,6 +63,30 @@
       <Filter>Source Files\graph</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackCowState.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackRabbitState.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="FindPillState.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="FindWeaponState.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderingStateCow.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="WanderingStateRabbit.cpp">
+      <Filter>Source Files\States\old</Filter>
+    </ClCompile>
+    <ClCompile Include="CowChasingState.cpp">
+      <Filter>Source Files\States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="CowSleepingState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -140,6 +152,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CowChasingState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CowSleepingState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -87,6 +87,8 @@
     <ClCompile Include="AttackCowState.cpp" />
     <ClCompile Include="AttackRabbitState.cpp" />
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="CowChasingState.cpp" />
+    <ClCompile Include="CowSleepingState.cpp" />
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FindPillState.cpp" />
@@ -112,6 +114,8 @@
     <ClInclude Include="AttackRabbitState.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="CowChasingState.h" />
+    <ClInclude Include="CowSleepingState.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FindPillState.h" />
