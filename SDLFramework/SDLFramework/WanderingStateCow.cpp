@@ -29,7 +29,7 @@ void WanderingStateCow::Move(Entity* obj, Graph* graph)
 
 	if (Random::getRandomNumber(0,4) == 4) {
 		std::cout << "Cow: Looking for pill!\n";
-		obj->setState(new FindPillState());
+		//obj->setState(new FindPillState());
 	}
 }
 

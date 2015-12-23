@@ -23,7 +23,7 @@ void FindWeaponState::Move(Entity* obj, Graph* graph)
 	if (obj->getWaypoint() == graph->getWeapon()->getWaypoint()) {
 		graph->moveWeapon();
 		std::cout << "Rabbit: Found weapon!\n";
-		obj->setState(new AttackCowState());
+		//obj->setState(new AttackCowState());
 	}
 }
 

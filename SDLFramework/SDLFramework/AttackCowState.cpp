@@ -22,7 +22,7 @@ void AttackCowState::Move(Entity* obj, Graph* graph)
 
 	if (obj->getWaypoint() == graph->getCow()->getWaypoint()) {
 		std::cout << "Rabbit: Attacked the cow!\n";
-		obj->setState(new WanderingStateRabbit());
+		//obj->setState(new WanderingStateRabbit());
 		graph->getCow()->resetState();
 	}
 }

@@ -30,7 +30,7 @@ void AttackRabbitState::Move(Entity* obj, Graph* graph)
 			std::cout << "Cow: Caught the rabbit!\n";
 		}
 		
-		obj->setState(new WanderingStateCow());
+		//obj->setState(new WanderingStateCow());
 		graph->getRabbit()->resetState();
 	}
 }

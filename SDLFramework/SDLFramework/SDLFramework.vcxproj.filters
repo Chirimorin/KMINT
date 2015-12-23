@@ -15,14 +15,35 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{f5db80d2-bdda-4a64-8822-71e2992e3f7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\graph">
-      <UniqueIdentifier>{cedb1c66-ed3f-4263-961e-fba01802b2b4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States\old">
       <UniqueIdentifier>{3819ba17-fa25-4e8d-902f-5cfa273c572b}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\States\Cow">
       <UniqueIdentifier>{fb773683-6c30-4be2-b948-98c6175bfa4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States\Rabbit">
+      <UniqueIdentifier>{8e6227e0-a325-43a4-a958-ad2b22d1d9ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graph">
+      <UniqueIdentifier>{cedb1c66-ed3f-4263-961e-fba01802b2b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Entities">
+      <UniqueIdentifier>{a077c3c9-6b40-47ee-b2ae-49337a5201e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Graph">
+      <UniqueIdentifier>{3d04e337-f9d8-46d4-add5-106af13edabf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{16abdfe6-42ea-42a8-b1e0-41607378813e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\old states">
+      <UniqueIdentifier>{c6ffe4dc-2477-46ed-92a7-afb8e010ed75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\Cow">
+      <UniqueIdentifier>{20edf9cb-2c3f-4cd8-936b-97fd1ee7b9f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\States\Rabbit">
+      <UniqueIdentifier>{7f7f3738-2c43-45b1-94e4-433767ef1926}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,20 +68,17 @@
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>Source Files\States</Filter>
-    </ClCompile>
     <ClCompile Include="Edge.cpp">
-      <Filter>Source Files\graph</Filter>
+      <Filter>Source Files\Graph</Filter>
     </ClCompile>
     <ClCompile Include="Graph.cpp">
-      <Filter>Source Files\graph</Filter>
+      <Filter>Source Files\Graph</Filter>
     </ClCompile>
     <ClCompile Include="Vector2.cpp">
-      <Filter>Source Files\graph</Filter>
+      <Filter>Source Files\Graph</Filter>
     </ClCompile>
     <ClCompile Include="Waypoint.cpp">
-      <Filter>Source Files\graph</Filter>
+      <Filter>Source Files\Graph</Filter>
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
@@ -87,7 +105,28 @@
       <Filter>Source Files\States\Cow</Filter>
     </ClCompile>
     <ClCompile Include="CowSleepingState.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\States\Cow</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseState.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitWanderingState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitAttackState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitFindWeaponState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitFleeState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitFindPillState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
+    </ClCompile>
+    <ClCompile Include="RabbitWanderingWithPillState.cpp">
+      <Filter>Source Files\States\Rabbit</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -103,62 +142,80 @@
     <ClInclude Include="IGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Waypoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Edge.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Graph.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Rabbit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pill.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingStateCow.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="FindPillState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="AttackCowState.h">
+      <Filter>Header Files\States\old states</Filter>
     </ClInclude>
     <ClInclude Include="AttackRabbitState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingStateRabbit.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States\old states</Filter>
     </ClInclude>
     <ClInclude Include="FindWeaponState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States\old states</Filter>
     </ClInclude>
-    <ClInclude Include="AttackCowState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="FindPillState.h">
+      <Filter>Header Files\States\old states</Filter>
     </ClInclude>
-    <ClInclude Include="BaseState.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Cow.h">
+      <Filter>Header Files\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Pill.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Rabbit.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Edge.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Waypoint.h">
+      <Filter>Header Files\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderingStateCow.h">
+      <Filter>Header Files\States\old states</Filter>
+    </ClInclude>
+    <ClInclude Include="WanderingStateRabbit.h">
+      <Filter>Header Files\States\old states</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
     <ClInclude Include="CowChasingState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States\Cow</Filter>
     </ClInclude>
     <ClInclude Include="CowSleepingState.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\States\Cow</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitWanderingState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitAttackState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitFindWeaponState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitFleeState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitFindPillState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
+    </ClInclude>
+    <ClInclude Include="RabbitWanderingWithPillState.h">
+      <Filter>Header Files\States\Rabbit</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

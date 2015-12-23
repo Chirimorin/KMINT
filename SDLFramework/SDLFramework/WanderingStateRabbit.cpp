@@ -29,7 +29,7 @@ void WanderingStateRabbit::Move(Entity* obj, Graph* graph)
 
 	if (graph->getCow()->isAttacking()) {
 		std::cout << "Rabbit: Looking for weapon!\n";
-		obj->setState(new FindWeaponState());
+		//obj->setState(new FindWeaponState());
 	}
 }
 

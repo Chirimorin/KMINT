@@ -1,5 +1,5 @@
 #include "Rabbit.h"
-#include "WanderingStateRabbit.h"
+#include "RabbitWanderingState.h"
 
 #include <iostream>
 
@@ -38,5 +38,5 @@ void Rabbit::MoveTo(Waypoint* waypoint)
 
 void Rabbit::resetState()
 {
-	setState(new WanderingStateRabbit());
+	setState(new RabbitWanderingState());
 }

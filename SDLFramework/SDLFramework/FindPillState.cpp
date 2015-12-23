@@ -23,6 +23,6 @@ void FindPillState::Move(Entity* obj, Graph* graph)
 	if (obj->getWaypoint() == graph->getPill()->getWaypoint()) {
 		graph->movePill();
 		std::cout << "Cow: Found pill!\n";
-		obj->setState(new AttackRabbitState());
+		//obj->setState(new AttackRabbitState());
 	}
 }

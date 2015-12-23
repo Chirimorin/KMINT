@@ -15,5 +15,6 @@ public:
 	void MoveTo(Waypoint* waypoint) override;
 
 	void resetState() override;
+	bool getAttacked() override { return false; }; // TODO: nog goed maken
 };
 

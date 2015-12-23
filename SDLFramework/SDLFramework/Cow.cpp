@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <SDL.h>
-#include "WanderingStateCow.h"
+#include "CowChasingState.h"
 
 Cow::Cow(Waypoint* waypoint) : Entity()
 {
@@ -39,5 +39,5 @@ void Cow::MoveTo(Waypoint* waypoint)
 
 void Cow::resetState()
 {
-	setState(new WanderingStateCow());
+	setState(new CowChasingState());
 }

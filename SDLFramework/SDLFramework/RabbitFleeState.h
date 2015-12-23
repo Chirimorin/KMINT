@@ -1,11 +1,11 @@
 #pragma once
 #include "BaseState.h"
 
-class CowChasingState : public CowState
+class RabbitFleeState : public RabbitState
 {
 public:
-	CowChasingState();
-	~CowChasingState() {}
+	RabbitFleeState();
+	~RabbitFleeState() {}
 
 	void Move(Entity* obj, Graph* graph) override;
 };
