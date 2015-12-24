@@ -1,5 +1,8 @@
 #include "RabbitWanderingWithPillState.h"
 #include "RabbitWanderingState.h"
+#include "Rabbit.h"
+#include "Graph.h"
+#include "Random.h"
 
 RabbitWanderingWithPillState::RabbitWanderingWithPillState() : RabbitState(0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
@@ -7,10 +10,20 @@ RabbitWanderingWithPillState::RabbitWanderingWithPillState() : RabbitState(0, 0,
 
 void RabbitWanderingWithPillState::Move(Entity* obj, Graph* graph)
 {
-	//TODO: als de koe de pil heeft gepakt en slaapt, dan ga de haas wandelen
+	Waypoint* waypoint = obj->getWaypoint();
+	std::vector<Edge*> edges = waypoint->getEdges();
+	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
 
-	/*if ()
-	{
-	obj->setState(new RabbitWanderinState());
-	}*/
+	if (Random::getRandomNumber(0, 1)) {
+		obj->MoveTo(edge->getWaypoint1());
+	}
+	else {
+		obj->MoveTo(edge->getWaypoint2());
+	}
+
+	//TODO: als de koe de pil heeft gepakt en slaapt, dan WanderingState
+
+	//*if () {
+	obj->setState(new RabbitWanderingState());
+	//}
 }

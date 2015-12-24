@@ -8,5 +8,7 @@ public:
 	~CowSleepingState() {}
 
 	void Move(Entity* obj, Graph* graph) override;
+private:
+	int sleepTimer_ = 0;
 };
 
