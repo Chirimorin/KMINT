@@ -12,7 +12,6 @@
 RabbitFleeState::RabbitFleeState() : RabbitState(127, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
-	getAttacked_ = true;
 }
 
 void RabbitFleeState::Move(Entity* obj, Graph* graph)

@@ -6,7 +6,6 @@
 CowSleepingState::CowSleepingState() : CowState(0, 255, 0)
 {
 	isAttacking_ = false;
-	getAttacked_ = true;
 }
 
 void CowSleepingState::Move(Entity* obj, Graph* graph)

@@ -12,7 +12,6 @@
 RabbitWanderingState::RabbitWanderingState() : RabbitState(255, 255, 255)
 {
 	isAttacking_ = false;
-	getAttacked_ = true;
 }
 
 void RabbitWanderingState::Move(Entity* obj, Graph* graph)

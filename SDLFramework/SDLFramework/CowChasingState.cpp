@@ -7,7 +7,6 @@
 CowChasingState::CowChasingState() : CowState(255, 0, 0)
 {
 	isAttacking_ = true;
-	getAttacked_ = true;
 }
 
 void CowChasingState::Move(Entity* obj, Graph* graph)

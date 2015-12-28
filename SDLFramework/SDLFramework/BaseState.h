@@ -19,7 +19,6 @@ protected:
 	Uint8 g_;
 	Uint8 b_;
 	bool isAttacking_;
-	bool getAttacked_;
 };
 
 class CowState : public BaseState
@@ -28,7 +27,7 @@ public:
 	CowState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
 	~CowState() {}
 
-	bool getAttacked() override { return getAttacked_; };
+	bool getAttacked() override;
 };
 
 class RabbitState : public BaseState
@@ -37,5 +36,5 @@ public:
 	RabbitState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
 	virtual ~RabbitState() {}
 
-	bool getAttacked() override { return getAttacked_; };
+	bool getAttacked() override;
 };
