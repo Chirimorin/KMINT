@@ -6,6 +6,8 @@
 
 RabbitFindPillState::RabbitFindPillState() : RabbitState(225, 255, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
+	isAttacking_ = false;
+	getAttacked_ = true;
 }
 
 void RabbitFindPillState::Move(Entity* obj, Graph* graph)

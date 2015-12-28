@@ -6,6 +6,8 @@
 
 RabbitWanderingWithPillState::RabbitWanderingWithPillState() : RabbitState(0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
+	isAttacking_ = false;
+	getAttacked_ = false;
 }
 
 void RabbitWanderingWithPillState::Move(Entity* obj, Graph* graph)

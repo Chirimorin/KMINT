@@ -12,12 +12,14 @@ public:
 
 	virtual void Move(Entity* obj, Graph* graph) = 0;
 	void setColor(SDL_Texture* texture);
-	virtual bool isAttacking() { return false; }
+	virtual bool isAttacking() { return isAttacking_; }
 	virtual bool getAttacked() = 0;
 protected:
 	Uint8 r_;
 	Uint8 g_;
 	Uint8 b_;
+	bool isAttacking_;
+	bool getAttacked_;
 };
 
 class CowState : public BaseState
@@ -26,7 +28,7 @@ public:
 	CowState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
 	~CowState() {}
 
-	bool getAttacked() override;
+	bool getAttacked() override { return getAttacked_; };
 };
 
 class RabbitState : public BaseState
@@ -35,5 +37,5 @@ public:
 	RabbitState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
 	virtual ~RabbitState() {}
 
-	bool getAttacked() override;
+	bool getAttacked() override { return getAttacked_; };
 };

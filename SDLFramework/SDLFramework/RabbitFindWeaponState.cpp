@@ -6,6 +6,8 @@
 
 RabbitFindWeaponState::RabbitFindWeaponState() : RabbitState(255, 75, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
+	isAttacking_ = false;
+	getAttacked_ = true;
 }
 
 void RabbitFindWeaponState::Move(Entity* obj, Graph* graph)

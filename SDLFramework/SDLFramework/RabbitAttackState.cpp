@@ -7,6 +7,8 @@
 
 RabbitAttackState::RabbitAttackState() : RabbitState(255, 0, 0)
 {
+	isAttacking_ = true;
+	getAttacked_ = true;
 }
 
 void RabbitAttackState::Move(Entity* obj, Graph* graph)
