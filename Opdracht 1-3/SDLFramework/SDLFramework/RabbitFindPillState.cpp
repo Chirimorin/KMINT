@@ -11,6 +11,13 @@ RabbitFindPillState::RabbitFindPillState() : RabbitState(225, 255, 0) // TODO: m
 
 void RabbitFindPillState::Move(Entity* obj, Graph* graph)
 {
+	timer_++;
+	// TODO: goede waarden instellen
+	if (timer_ == 2 && chanceToFindPillState_ <= 85) {
+		chanceToFindPillState_ += 5;
+		printf("chanceToFindPillState + 5 \n");
+	}
+
 	if (graph->setShortestPath(obj->getWaypoint(), graph->getPill()->getWaypoint())) {
 		obj->MoveTo(graph->getFirstWaypointShortestPath());
 	}

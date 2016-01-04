@@ -11,6 +11,13 @@ RabbitFindWeaponState::RabbitFindWeaponState() : RabbitState(255, 75, 0) // TODO
 
 void RabbitFindWeaponState::Move(Entity* obj, Graph* graph)
 {
+	timer_++;
+	// TODO: goede waarden instellen
+	if (timer_ == 2 && chanceToFindWeaponState_ <= 85) {
+		chanceToFindWeaponState_ += 5;;
+		printf("chanceToFindWeaponState + 5 \n");
+	}
+
 	if (graph->setShortestPath(obj->getWaypoint(), graph->getWeapon()->getWaypoint())) {
 		obj->MoveTo(graph->getFirstWaypointShortestPath());
 	}

@@ -33,6 +33,11 @@ public:
 class RabbitState : public BaseState
 {
 public:
+	int timer_ = 0;
+	int chanceToFleeState_ = 50;
+	int chanceToFindPillState_ = 30;
+	int chanceToFindWeaponState_ = 20;
+
 	RabbitState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
 	virtual ~RabbitState() {}
 

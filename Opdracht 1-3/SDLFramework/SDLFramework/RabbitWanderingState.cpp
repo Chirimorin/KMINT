@@ -16,6 +16,8 @@ RabbitWanderingState::RabbitWanderingState() : RabbitState(255, 255, 255)
 
 void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 {
+	timer_ = 0;
+
 	Waypoint* waypoint = obj->getWaypoint();
 	std::vector<Edge*> edges = waypoint->getEdges();
 	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
