@@ -21,3 +21,9 @@ bool RabbitState::getAttacked()
 	// TODO: rabbit resetten
 	return true;
 }
+
+/*TODO:
+als haas gepakt is door de koe, dan
+chanceToFleeState_ of
+chanceToFindPillState_ of
+chanceToFindWeaponState_ aanpassen (5 of zoiets eraf?)*/

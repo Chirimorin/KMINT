@@ -25,7 +25,9 @@ void RabbitFindPillState::Move(Entity* obj, Graph* graph)
 	if (obj->getWaypoint() == graph->getPill()->getWaypoint()) {
 		
 		// TODO: haas kan niet meer worden aangevallen zo lang hij de slaap pil heeft
-		
+		// TODO: de pil ergens anders plaatsen (ver weg van haas)
+
 		obj->setState(new RabbitWanderingWithPillState());
+		graph->movePill();
 	}
 }

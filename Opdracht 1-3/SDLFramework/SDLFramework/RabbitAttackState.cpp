@@ -40,8 +40,9 @@ void RabbitAttackState::Move(Entity* obj, Graph* graph)
 		// TODO: als de haas de koe heeft aangevallen, dan state aanpassen
 		//if () {
 			obj->setState(new RabbitWanderingState());
-			// TODO: koe opnieuw ergens plaatsen
-			// TODO: haas heeft geen wapen meer (wapen ergens anders plaatsen
+			// TODO: koe opnieuw ergens plaatsen (ver weg van haas)
+			// TODO: haas heeft geen wapen meer
+			// TODO: reset state koe
 		//}
 	}
 

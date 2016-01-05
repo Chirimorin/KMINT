@@ -15,9 +15,12 @@ void CowChasingState::Move(Entity* obj, Graph* graph)
 		obj->MoveTo(graph->getFirstWaypointShortestPath());
 	}
 
-	if (obj->getWaypoint() == graph->getRabbit()->getWaypoint() && 
-		!graph->getRabbit()->getAttacked()) {
+	if (obj->getWaypoint() == graph->getRabbit()->getWaypoint()) {
+		if (!graph->getRabbit()->getAttacked()) {
 			obj->setState(new CowSleepingState());
-			// TODO: haas heeft geen slaap pil meer, want die is gebruikt (pil ergens anders plaatsen)
+		}
+		else {
+			// TODO: reset state haas
+		}
 	}
 }

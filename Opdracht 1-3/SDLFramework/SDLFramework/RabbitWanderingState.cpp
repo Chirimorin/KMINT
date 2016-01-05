@@ -49,10 +49,10 @@ void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 				obj->setState(new RabbitFleeState());
 				break;
 			case 1:
-				obj->setState(new RabbitFindPillState());
+				obj->setState(new RabbitFindPillState()); // TODO: als pil in de buurt is en koe daar niet is
 				break;
 			case 2:
-				obj->setState(new RabbitFindWeaponState());
+				obj->setState(new RabbitFindWeaponState()); // TODO: als wapen in de buurt is en koe daar niet is
 				break;
 		}
 	}

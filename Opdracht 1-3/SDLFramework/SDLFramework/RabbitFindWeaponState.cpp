@@ -25,7 +25,9 @@ void RabbitFindWeaponState::Move(Entity* obj, Graph* graph)
 	if (obj->getWaypoint() == graph->getWeapon()->getWaypoint()) {
 		
 		// TODO: de haas gaat aanvallen en kan niet aangevallen worden door de koe
-		
+		// TODO: wapen ergens plaatsen (ver weg van haas)
+
 		obj->setState(new RabbitAttackState());
+		graph->moveWeapon();
 	}
 }

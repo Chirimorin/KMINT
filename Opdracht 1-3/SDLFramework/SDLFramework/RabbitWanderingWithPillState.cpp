@@ -2,6 +2,7 @@
 #include "RabbitWanderingState.h"
 #include "Rabbit.h"
 #include "Graph.h"
+#include "Cow.h"
 #include "Random.h"
 
 RabbitWanderingWithPillState::RabbitWanderingWithPillState() : RabbitState(0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
@@ -22,9 +23,10 @@ void RabbitWanderingWithPillState::Move(Entity* obj, Graph* graph)
 		obj->MoveTo(edge->getWaypoint2());
 	}
 
-	//TODO: als de koe de pil heeft gepakt en slaapt, dan WanderingState
-
-	//*if () {
-	obj->setState(new RabbitWanderingState());
-	//}
+	// ALS DE KOE DE PIL HEEFT GEPAKT EN SLAAPT
+	// TODO: haas heeft geen slaap pil meer, want die is gebruikt
+	// TODO: haas gaat weer wandelen
+	if (obj->getWaypoint() == graph->getCow()->getWaypoint()) {
+		obj->setState(new RabbitWanderingState());
+	}
 }

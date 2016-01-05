@@ -53,21 +53,21 @@ void RabbitFleeState::Move(Entity* obj, Graph* graph)
 		}
 	});
 
-	// TODO: bij het zien van het wapen / pil rekening houden met of de koe daar is
+	// TODO: bij het zien van het wapen / pil rekening houden met of de koe daar is of niet (is de koe daar, dan er niet heen gaan)
 	// TODO: kans op bepaalde keuze aanpassen afhankelijk van succes
 	if (seesPill && seesWeapon) {
 		if (Random::getRandomNumber(0, 1)) {
-			obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen dat hij de pil gaat zoeken
+			obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
 		}
 		else {
-			obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen dat hij het wapen gaat zoeken
+			obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
 		}
 	}
 	else if (seesPill) {
-		obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen dat hij de pil gaat zoeken
+		obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
 	}
 	else if (seesWeapon) {
-		obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen dat hij het wapen gaat zoeken
+		obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
 	}
 
 }
