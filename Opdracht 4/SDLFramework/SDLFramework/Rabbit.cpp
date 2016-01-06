@@ -12,6 +12,16 @@ Rabbit::Rabbit() : Entity()
 	mY = 100;
 
 	state_ = new RabbitWanderingState();
+
+	// TODO: goede waardes 
+	velocity_ = Vector2(1, 1);
+	heading_ = Vector2(1, 1);
+	side_ = Vector2(1, 1);
+
+	mass_ = 1;
+	maxSpeed_ = 10;
+	maxForce_ = 5;
+	maxTurnRate_ = 1;
 }
 
 Rabbit::~Rabbit()
@@ -29,7 +39,7 @@ void Rabbit::Update(float deltaTime)
 
 	
 	//calculate the combined force from each steering behavior in the vehicle’s list
-	Vector2 steeringForce = steering_.Calculate();
+	/*Vector2 steeringForce = steering_.Calculate();
 
 	//Acceleration = Force/Mass
 	Vector2 acceleration = steeringForce / mass_;
@@ -38,7 +48,7 @@ void Rabbit::Update(float deltaTime)
 	velocity_ += acceleration * deltaTime;
 
 	//make sure vehicle does not exceed maximum velocity
-	/*velocity_.Truncate(maxSpeed_);
+	velocity_.Truncate(maxSpeed_);
 
 	//update the position
 	m_vPos += velocity_ * deltaTime;

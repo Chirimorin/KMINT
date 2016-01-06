@@ -117,3 +117,20 @@ Vector2 Reflect(const Vector2 &V, const Vector2 &N)
 {
 	return (2 * DotProduct(N, V)) * N - V;
 }
+
+
+// TODO: truncate fucntie toevoegen
+Vector2 Truncate(const Vector2 &v, float max)
+{
+	if (Magnitude(v) > max) {
+		Vector2 temp = Normal(v) * max; 
+		return Vector2(temp.x, temp.y);
+	}
+	return v;
+}
+
+// TODO: perp fucntie toevoegen
+Vector2 Perp(const Vector2 &v)
+{
+	return Vector2(-v.y, v.x);
+}

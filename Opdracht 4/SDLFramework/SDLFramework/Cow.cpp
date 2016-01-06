@@ -12,6 +12,16 @@ Cow::Cow() : Entity()
 	mY = 50;
 
 	state_ = new CowChasingState();
+
+	// TODO: goede waardes 
+	velocity_ = Vector2(5, 5);
+	heading_ = Vector2(0, 0);
+	side_ = Vector2(0, 0);
+
+	mass_ = 1;
+	maxSpeed_ = 10;
+	maxForce_ = 5;
+	maxTurnRate_ = 1;
 }
 
 Cow::~Cow()
@@ -38,7 +48,8 @@ void Cow::Update(float deltaTime)
 
 	
 	//calculate the combined force from each steering behavior in the vehicle’s list
-	Vector2 steeringForce = steering_.Calculate();
+	//Vector2 steeringForce = steering_.Calculate();
+	Vector2 steeringForce = Vector2(10, 10); // MOET ERUIT
 
 	//Acceleration = Force/Mass
 	Vector2 acceleration = steeringForce / mass_;
@@ -47,19 +58,18 @@ void Cow::Update(float deltaTime)
 	velocity_ += acceleration * deltaTime;
 
 	//make sure vehicle does not exceed maximum velocity
-	/*velocity_.Truncate(maxSpeed_);
+	velocity_ = Truncate(velocity_, maxSpeed_);
 
 	//update the position
-	m_vPos += velocity_ * deltaTime;
+	mX += velocity_.x * deltaTime;
+	mY += velocity_.y * deltaTime;
 
 	//update the heading if the vehicle has a velocity greater than a very small value
-	if (velocity_.LengthSq() > 0.00000001)
-	{
-		heading_ = Vec2DNormalize(velocity_);
-		side_ = heading_.Perp();
+	if (MagnitudeSquared(velocity_) > 0.00000001) {
+		heading_ = Normal(velocity_);
+		side_ = Perp(heading_);
 	}
 
 	//treat the screen as a toroid
-	WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-	*/
+	//WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
 }

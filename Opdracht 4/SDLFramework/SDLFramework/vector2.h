@@ -41,3 +41,6 @@ float   DotPerp(const Vector2 &a, const Vector2 &b);
 // Determine the vector resulting reflecting vector V through a
 // ray with direction N
 Vector2 Reflect(const Vector2 &V, const Vector2 &N);
+
+Vector2 Truncate(const Vector2 &v, float max);
+Vector2 Perp(const Vector2 &v);
