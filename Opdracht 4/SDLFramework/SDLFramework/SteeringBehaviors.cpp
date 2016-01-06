@@ -8,7 +8,7 @@ SteeringBehaviors::~SteeringBehaviors()
 {
 }
 
-// Blz 103
+// Blz 103 (blz 122 ?)
 Vector2 SteeringBehaviors::Calculate()
 {
 	/*
@@ -16,8 +16,19 @@ Vector2 SteeringBehaviors::Calculate()
 	m_vSteeringForce.Zero();
 
 	SVector2D force;
+	if (On(persuit)) { 
+		//...
+		return m_vSteeringForce;
+	}
+	if (On(wander)) {
+		//...
+		return m_vSteeringForce;
+	}
+	if (On(flee)) {
+		//...
+		return m_vSteeringForce;
+	}
 	*/
-
 
 	return Vector2();
 }

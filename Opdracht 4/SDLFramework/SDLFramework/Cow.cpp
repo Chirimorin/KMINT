@@ -19,7 +19,6 @@ Cow::~Cow()
 }
 
 
-
 // ----------------------------------------------------
 // HOOFDSTUK 3
 // https://unisalesianogames.files.wordpress.com/2011/08/programming-game-ai-by-example-mat-buckland2.pdf
@@ -37,7 +36,7 @@ void Cow::Update(float deltaTime)
 	// Vector2 stForce = steering_.Calculate();
 	// Calc new position, Check p 90.
 
-	/*
+	
 	//calculate the combined force from each steering behavior in the vehicle’s list
 	Vector2 steeringForce = steering_.Calculate();
 
@@ -48,7 +47,7 @@ void Cow::Update(float deltaTime)
 	velocity_ += acceleration * deltaTime;
 
 	//make sure vehicle does not exceed maximum velocity
-	velocity_.Truncate(maxSpeed_);
+	/*velocity_.Truncate(maxSpeed_);
 
 	//update the position
 	m_vPos += velocity_ * deltaTime;
