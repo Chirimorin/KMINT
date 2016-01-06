@@ -93,6 +93,7 @@
     <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="RabbitFleeState.cpp" />
     <ClCompile Include="RabbitWanderingState.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="SteeringBehaviors.cpp" />
     <ClCompile Include="vector2.cpp" />
   </ItemGroup>
@@ -110,6 +111,7 @@
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="RabbitFleeState.h" />
     <ClInclude Include="RabbitWanderingState.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="SteeringBehaviors.h" />
     <ClInclude Include="vector2.h" />
   </ItemGroup>

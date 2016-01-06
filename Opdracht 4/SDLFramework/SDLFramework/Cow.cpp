@@ -48,8 +48,7 @@ void Cow::Update(float deltaTime)
 
 	
 	//calculate the combined force from each steering behavior in the vehicle’s list
-	//Vector2 steeringForce = steering_.Calculate();
-	Vector2 steeringForce = Vector2(10, 10); // MOET ERUIT
+	Vector2 steeringForce = steering_.Calculate();
 
 	//Acceleration = Force/Mass
 	Vector2 acceleration = steeringForce / mass_;
