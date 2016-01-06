@@ -21,6 +21,10 @@ Rabbit::~Rabbit()
 void Rabbit::Update(float deltaTime)
 {
 	state_->Move(this);
+
+
 	// Vector2 stForce = steering_.Calculate();
 	// Calc new position, Check p 90.
+
+	// Treat the screen as a toroid!!
 }

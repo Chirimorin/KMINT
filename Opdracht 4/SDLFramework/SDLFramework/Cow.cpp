@@ -31,6 +31,9 @@ void Cow::Update(float deltaTime)
 {
 	state_->Move(this);
 
+	
+
+
 	// Vector2 stForce = steering_.Calculate();
 	// Calc new position, Check p 90.
 
