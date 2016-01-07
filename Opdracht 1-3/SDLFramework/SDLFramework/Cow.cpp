@@ -39,5 +39,5 @@ void Cow::MoveTo(Waypoint* waypoint)
 
 void Cow::resetState()
 {
-	setState(new CowChasingState());
+	setState(new CowChasingState(this));
 }

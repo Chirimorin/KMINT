@@ -2,6 +2,7 @@
 #include "IGameObject.h"
 #include "BaseState.h"
 
+//class BaseState;
 class Graph;
 class Waypoint;
 

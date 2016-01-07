@@ -1,4 +1,6 @@
 #pragma once
+#include "cow.h"
+#include "rabbit.h"
 #include <SDL_hints.h>
 struct SDL_Texture;
 class Entity;
@@ -24,10 +26,12 @@ protected:
 class CowState : public BaseState
 {
 public:
-	CowState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
+	CowState(Cow* cow, Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) { cow_ = cow;  }
 	~CowState() {}
 
 	bool getAttacked() override;
+protected:
+	Cow* cow_ = nullptr;
 };
 
 class RabbitState : public BaseState
@@ -38,8 +42,10 @@ public:
 	int chanceToFindPillState_ = 30;
 	int chanceToFindWeaponState_ = 20;
 
-	RabbitState(Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) {}
+	RabbitState(Rabbit* rabbit, Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) { rabbit_ = rabbit; }
 	virtual ~RabbitState() {}
 
 	bool getAttacked() override;
+protected:
+	Rabbit* rabbit_ = nullptr;
 };

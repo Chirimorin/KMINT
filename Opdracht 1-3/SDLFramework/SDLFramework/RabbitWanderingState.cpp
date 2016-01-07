@@ -9,7 +9,7 @@
 
 #include <algorithm>
 
-RabbitWanderingState::RabbitWanderingState() : RabbitState(255, 255, 255)
+RabbitWanderingState::RabbitWanderingState(Rabbit* rabbit) : RabbitState(rabbit, 255, 255, 255)
 {
 	isAttacking_ = false;
 }
@@ -46,13 +46,13 @@ void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 	if (seesCow) {
 		switch (Random::getRandomNumber(0, 2)) {
 			case 0:
-				obj->setState(new RabbitFleeState());
+				obj->setState(new RabbitFleeState(rabbit_));
 				break;
 			case 1:
-				obj->setState(new RabbitFindPillState()); // TODO: als pil in de buurt is en koe daar niet is
+				obj->setState(new RabbitFindPillState(rabbit_)); // TODO: als pil in de buurt is en koe daar niet is
 				break;
 			case 2:
-				obj->setState(new RabbitFindWeaponState()); // TODO: als wapen in de buurt is en koe daar niet is
+				obj->setState(new RabbitFindWeaponState(rabbit_)); // TODO: als wapen in de buurt is en koe daar niet is
 				break;
 		}
 	}

@@ -4,7 +4,7 @@
 class RabbitAttackState : public RabbitState
 {
 public:
-	RabbitAttackState();
+	RabbitAttackState(Rabbit* rabbit);
 	~RabbitAttackState() {}
 
 	void Move(Entity* obj, Graph* graph) override;

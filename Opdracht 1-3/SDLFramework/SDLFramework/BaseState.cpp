@@ -13,12 +13,27 @@ void BaseState::setColor(SDL_Texture* texture)
 bool CowState::getAttacked()
 {
 	// TODO: koe resetten
+	cow_->resetState();
 	return true;
 }
 
 bool RabbitState::getAttacked()
 {
+	// TODO:
+	// haas heeft pil
+	// return false
+
+	//zo nee
 	// TODO: rabbit resetten
+
+	/*if () {
+		return false;
+	}
+	else {
+		rabbit_->resetState();
+		return true;
+	}*/
+
 	return true;
 }
 

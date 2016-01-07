@@ -4,7 +4,7 @@
 class RabbitWanderingWithPillState : public RabbitState
 {
 public:
-	RabbitWanderingWithPillState();
+	RabbitWanderingWithPillState(Rabbit* rabbit);
 	~RabbitWanderingWithPillState() {}
 
 	void Move(Entity* obj, Graph* graph) override;

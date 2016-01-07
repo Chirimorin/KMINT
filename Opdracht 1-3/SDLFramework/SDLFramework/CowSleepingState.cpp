@@ -3,7 +3,7 @@
 #include "Cow.h"
 #include "Graph.h"
 
-CowSleepingState::CowSleepingState() : CowState(0, 255, 0)
+CowSleepingState::CowSleepingState(Cow* cow) : CowState(cow, 0, 255, 0)
 {
 	isAttacking_ = false;
 }
@@ -14,6 +14,6 @@ void CowSleepingState::Move(Entity* obj, Graph* graph)
 
 	if (sleepTimer_ == 5) {
 		sleepTimer_ = 0;
-		obj->setState(new CowChasingState());
+		obj->setState(new CowChasingState(cow_));
 	}
 }

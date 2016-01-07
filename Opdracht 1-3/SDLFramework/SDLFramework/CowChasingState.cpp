@@ -4,7 +4,7 @@
 #include "Rabbit.h"
 #include <iostream>
 
-CowChasingState::CowChasingState() : CowState(255, 0, 0)
+CowChasingState::CowChasingState(Cow* cow) : CowState(cow, 255, 0, 0)
 {
 	isAttacking_ = true;
 }
@@ -17,7 +17,7 @@ void CowChasingState::Move(Entity* obj, Graph* graph)
 
 	if (obj->getWaypoint() == graph->getRabbit()->getWaypoint()) {
 		if (!graph->getRabbit()->getAttacked()) {
-			obj->setState(new CowSleepingState());
+			obj->setState(new CowSleepingState(cow_));
 		}
 		else {
 			// TODO: reset state haas

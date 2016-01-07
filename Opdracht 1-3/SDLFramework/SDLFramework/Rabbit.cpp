@@ -38,5 +38,5 @@ void Rabbit::MoveTo(Waypoint* waypoint)
 
 void Rabbit::resetState()
 {
-	setState(new RabbitWanderingState());
+	setState(new RabbitWanderingState(this));
 }

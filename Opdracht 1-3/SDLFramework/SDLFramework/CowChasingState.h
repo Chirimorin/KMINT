@@ -4,7 +4,7 @@
 class CowChasingState : public CowState
 {
 public:
-	CowChasingState();
+	CowChasingState(Cow* cow);
 	~CowChasingState() {}
 
 	void Move(Entity* obj, Graph* graph) override;

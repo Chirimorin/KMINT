@@ -4,7 +4,7 @@
 #include "Graph.h"
 #include "Weapon.h"
 
-RabbitFindWeaponState::RabbitFindWeaponState() : RabbitState(255, 75, 0) // TODO: misschien kleur aanpassen in verband met veel states
+RabbitFindWeaponState::RabbitFindWeaponState(Rabbit* rabbit) : RabbitState(rabbit, 255, 75, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
 }
@@ -27,7 +27,7 @@ void RabbitFindWeaponState::Move(Entity* obj, Graph* graph)
 		// TODO: de haas gaat aanvallen en kan niet aangevallen worden door de koe
 		// TODO: wapen ergens plaatsen (ver weg van haas)
 
-		obj->setState(new RabbitAttackState());
+		obj->setState(new RabbitAttackState(rabbit_));
 		graph->moveWeapon();
 	}
 }

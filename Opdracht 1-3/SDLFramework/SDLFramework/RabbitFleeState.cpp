@@ -9,7 +9,7 @@
 
 #include <algorithm>
 
-RabbitFleeState::RabbitFleeState() : RabbitState(127, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
+RabbitFleeState::RabbitFleeState(Rabbit* rabbit) : RabbitState(rabbit, 127, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
 }
@@ -57,17 +57,17 @@ void RabbitFleeState::Move(Entity* obj, Graph* graph)
 	// TODO: kans op bepaalde keuze aanpassen afhankelijk van succes
 	if (seesPill && seesWeapon) {
 		if (Random::getRandomNumber(0, 1)) {
-			obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
+			obj->setState(new RabbitFindPillState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
 		}
 		else {
-			obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
+			obj->setState(new RabbitFindWeaponState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
 		}
 	}
 	else if (seesPill) {
-		obj->setState(new RabbitFindPillState()); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
+		obj->setState(new RabbitFindPillState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
 	}
 	else if (seesWeapon) {
-		obj->setState(new RabbitFindWeaponState()); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
+		obj->setState(new RabbitFindWeaponState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
 	}
 
 }

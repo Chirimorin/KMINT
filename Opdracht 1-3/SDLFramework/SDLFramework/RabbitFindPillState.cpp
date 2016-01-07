@@ -4,7 +4,7 @@
 #include "Graph.h"
 #include "Pill.h"
 
-RabbitFindPillState::RabbitFindPillState() : RabbitState(225, 255, 0) // TODO: misschien kleur aanpassen in verband met veel states
+RabbitFindPillState::RabbitFindPillState(Rabbit* rabbit) : RabbitState(rabbit, 225, 255, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
 }
@@ -27,7 +27,7 @@ void RabbitFindPillState::Move(Entity* obj, Graph* graph)
 		// TODO: haas kan niet meer worden aangevallen zo lang hij de slaap pil heeft
 		// TODO: de pil ergens anders plaatsen (ver weg van haas)
 
-		obj->setState(new RabbitWanderingWithPillState());
+		obj->setState(new RabbitWanderingWithPillState(rabbit_));
 		graph->movePill();
 	}
 }

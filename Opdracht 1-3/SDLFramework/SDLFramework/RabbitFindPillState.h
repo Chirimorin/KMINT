@@ -4,7 +4,7 @@
 class RabbitFindPillState : public RabbitState
 {
 public:
-	RabbitFindPillState();
+	RabbitFindPillState(Rabbit* rabbit);
 	~RabbitFindPillState() {}
 
 	void Move(Entity* obj, Graph* graph) override;

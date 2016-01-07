@@ -5,7 +5,7 @@
 #include "Cow.h"
 #include "Random.h"
 
-RabbitWanderingWithPillState::RabbitWanderingWithPillState() : RabbitState(0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
+RabbitWanderingWithPillState::RabbitWanderingWithPillState(Rabbit* rabbit) : RabbitState(rabbit, 0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
 }
@@ -27,6 +27,6 @@ void RabbitWanderingWithPillState::Move(Entity* obj, Graph* graph)
 	// TODO: haas heeft geen slaap pil meer, want die is gebruikt
 	// TODO: haas gaat weer wandelen
 	if (obj->getWaypoint() == graph->getCow()->getWaypoint()) {
-		obj->setState(new RabbitWanderingState());
+		obj->setState(new RabbitWanderingState(rabbit_));
 	}
 }

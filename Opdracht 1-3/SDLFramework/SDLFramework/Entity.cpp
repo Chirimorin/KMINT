@@ -1,6 +1,5 @@
 #include "Entity.h"
 #include "Waypoint.h"
-#include "BaseState.h"
 
 Entity::Entity()
 {
@@ -14,8 +13,8 @@ Entity::~Entity()
 void Entity::MoveTo(Waypoint* waypoint)
 {
 	waypoint_ = waypoint;
-	mX = waypoint_->getPosition().x;
-	mY = waypoint_->getPosition().y;
+	mX = static_cast<uint32_t>(waypoint_->getPosition().x);
+	mY = static_cast<uint32_t>(waypoint_->getPosition().y);
 }
 
 void Entity::setState(BaseState* state)
