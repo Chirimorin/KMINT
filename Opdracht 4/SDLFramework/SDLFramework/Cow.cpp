@@ -14,12 +14,13 @@ Cow::Cow() : Entity()
 	state_ = new CowChasingState();
 
 	// TODO: goede waardes 
+	position_ = { 50.f,50.f };
 	velocity_ = Vector2(5, 5);
 	heading_ = Vector2(0, 0);
 	side_ = Vector2(0, 0);
 
 	mass_ = 1;
-	maxSpeed_ = 10;
+	maxSpeed_ = 100;
 	maxForce_ = 5;
 	maxTurnRate_ = 1;
 }
@@ -60,8 +61,9 @@ void Cow::Update(float deltaTime)
 	velocity_ = Truncate(velocity_, maxSpeed_);
 
 	//update the position
-	mX += velocity_.x * deltaTime;
-	mY += velocity_.y * deltaTime;
+	position_ += velocity_ * deltaTime;
+	mX = static_cast<uint32_t>(position_.x);
+	mY = static_cast<uint32_t>(position_.y);
 
 	//update the heading if the vehicle has a velocity greater than a very small value
 	if (MagnitudeSquared(velocity_) > 0.00000001) {

@@ -8,8 +8,9 @@ class Entity : public IGameObject
 {
 public:
 	Entity();
-	~Entity();
+	virtual ~Entity();
 protected:
+	Vector2 position_;
 	Vector2 velocity_;
 	//a normalized vector pointing in the direction the entity is heading.
 	Vector2 heading_;

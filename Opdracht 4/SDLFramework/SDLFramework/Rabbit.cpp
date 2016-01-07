@@ -8,8 +8,8 @@ Rabbit::Rabbit() : Entity()
 	mWidth = 48;
 	mHeight = 48;
 
-	mX = 100;
-	mY = 100;
+	mX = 250;
+	mY = 250;
 
 	state_ = new RabbitWanderingState();
 
