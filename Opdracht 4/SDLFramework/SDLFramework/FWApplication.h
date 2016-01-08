@@ -106,6 +106,8 @@ public:
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void DrawTexture(SDL_Texture * texture, int xOffset, int yOffset);
 
+	void DrawTexture(SDL_Texture * texture, int xOffset, int yOffset, double angle);
+
 
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Draw a texture to the screen at a given position </summary>
@@ -119,6 +121,7 @@ public:
 	/// <param name="height"> 	The height. </param>
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	void DrawTexture(SDL_Texture * texture, int xOffset, int yOffset, int width, int height);
+	void DrawTexture(SDL_Texture * texture, int xOffset, int yOffset, int width, int height, double angle);
 	
 
 

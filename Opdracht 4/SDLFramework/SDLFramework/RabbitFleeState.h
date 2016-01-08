@@ -7,6 +7,7 @@ public:
 	RabbitFleeState();
 	~RabbitFleeState() {}
 
-	void Move(Entity* obj) override;
+	void Update(Entity* obj) override;
+	Vector2 CalculateForce(Entity* obj) override;
 };
 

@@ -8,6 +8,6 @@ public:
 	Cow();
 	~Cow();
 
-	void Update(float deltaTime) override;
+	void Draw() override;
 };
 

@@ -4,7 +4,6 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
-
 #include "Cow.h"
 #include "Rabbit.h"
 
@@ -23,6 +22,9 @@ int main(int args[])
 	
 	auto cow = new Cow();
 	auto rabbit = new Rabbit();
+
+	cow->SetTarget(rabbit);
+	rabbit->SetTarget(cow);
 
 	application->AddRenderable(cow);
 	application->AddRenderable(rabbit);

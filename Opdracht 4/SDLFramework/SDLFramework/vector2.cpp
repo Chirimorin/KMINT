@@ -9,6 +9,9 @@
 #include "Vector2.h"
 #include <assert.h>
 #include <set>
+#include <SDL.h>
+#include <SDL_stdinc.h>
+#include "FWApplication.h"
 
 Vector2::Vector2(float _x, float _y)
 {
@@ -94,6 +97,25 @@ float MagnitudeSquared(const Vector2 &v)
 	return v.x * v.x + v.y * v.y;
 }
 
+float MagnitudeWrapped(const Vector2& v)
+{
+	float magnitudeSquared = INFINITY;
+
+	for (float x = -800; x <= 800; x+=800)
+	{
+		for (float y = -600; y <= 600; y += 600)
+		{
+			float newMagnitude = MagnitudeSquared(v + Vector2{ x, y });
+			if (newMagnitude < magnitudeSquared)
+			{
+				magnitudeSquared = newMagnitude;
+			}
+		}
+	}
+
+	return sqrtf(magnitudeSquared);
+}
+
 Vector2 Normal(const Vector2 &v)
 {
 	float mag = Magnitude(v);
@@ -133,4 +155,54 @@ Vector2 Truncate(const Vector2 &v, float max)
 Vector2 Perp(const Vector2 &v)
 {
 	return Vector2(-v.y, v.x);
+}
+
+double Angle(const Vector2& v)
+{
+	return (std::atan2(v.y, v.x) / M_PI) * 180.0;
+}
+
+void WrapAround(Vector2& v)
+{
+	int w = 800;
+	int h = 600;
+
+	while (v.x > w)
+	{
+		v.x -= w;
+	}
+	while (v.x < 0)
+	{
+		v.x += w;
+	}
+	while (v.y > h)
+	{
+		v.y -= h;
+	}
+	while (v.y < 0)
+	{
+		v.y += h;
+	}
+}
+
+Vector2 WrappedDistance(Vector2& v)
+{
+	float magnitudeSquared = INFINITY;
+	Vector2 result;
+
+	for (float x = -800; x <= 800; x += 800)
+	{
+		for (float y = -600; y <= 600; y += 600)
+		{
+			Vector2 newVector = v + Vector2{ x, y };
+			float newMagnitude = MagnitudeSquared(newVector);
+			if (newMagnitude < magnitudeSquared)
+			{
+				magnitudeSquared = newMagnitude;
+				result = newVector;
+			}
+		}
+	}
+
+	return result;
 }

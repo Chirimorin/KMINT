@@ -7,7 +7,5 @@ class Rabbit : public Entity
 public:
 	Rabbit();
 	~Rabbit();
-
-	void Update(float deltaTime) override;
 };
 

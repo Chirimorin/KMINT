@@ -1,76 +1,51 @@
 #include "Cow.h"
 #include "CowChasingState.h"
+#include <iostream>
 
 Cow::Cow() : Entity()
 {
-	mTexture = mApplication->LoadTexture("cow.bmp");
+	mTexture = mApplication->LoadTexture("cow.png");
 
-	mWidth = 48;
-	mHeight = 48;
-
-	mX = 50;
-	mY = 50;
+	mWidth = 156;
+	mHeight = 57;
 
 	state_ = new CowChasingState();
 
 	// TODO: goede waardes 
 	position_ = { 50.f,50.f };
-	velocity_ = Vector2(5, 5);
+	velocity_ = Vector2(75, 5);
 	heading_ = Vector2(0, 0);
 	side_ = Vector2(0, 0);
 
 	mass_ = 1;
-	maxSpeed_ = 100;
-	maxForce_ = 5;
-	maxTurnRate_ = 1;
+	maxSpeed_ = 150;
+	maxForce_ = 100;
+	maxTurnRate_ = 1000;
 }
 
 Cow::~Cow()
 {
 }
 
+void Cow::Draw()
+{
+	Entity::Draw();
+
+	// DEBUG: teken een lijn naar target
+	Vector2 goal = target_->GetPosition() - position_;
+	goal += target_->GetHeading() * Magnitude(goal) / 5;
+
+	Vector2 direction = WrappedDistance(goal);
+	Vector2 endPos = position_ + direction;
+	mApplication->SetColor({ 255,0,0,255 });
+	for (int w = -800; w <= 800; w += 800)
+		for (int h = -600; h <= 600; h += 600)
+			mApplication->DrawLine(position_.x + w, position_.y + h, endPos.x + w, endPos.y + h);
+	mApplication->SetColor({ 255,255,255,255 });
+}
 
 // ----------------------------------------------------
 // HOOFDSTUK 3
 // https://unisalesianogames.files.wordpress.com/2011/08/programming-game-ai-by-example-mat-buckland2.pdf
 // ----------------------------------------------------
 
-
-// Boek blz 89 en 90
-void Cow::Update(float deltaTime)
-{
-	state_->Move(this);
-
-	
-
-
-	// Vector2 stForce = steering_.Calculate();
-	// Calc new position, Check p 90.
-
-	
-	//calculate the combined force from each steering behavior in the vehicle’s list
-	Vector2 steeringForce = steering_.Calculate();
-
-	//Acceleration = Force/Mass
-	Vector2 acceleration = steeringForce / mass_;
-
-	//update velocity
-	velocity_ += acceleration * deltaTime;
-
-	//make sure vehicle does not exceed maximum velocity
-	velocity_ = Truncate(velocity_, maxSpeed_);
-
-	//update the position
-	position_ += velocity_ * deltaTime;
-	mX = static_cast<uint32_t>(position_.x);
-	mY = static_cast<uint32_t>(position_.y);
-
-	//update the heading if the vehicle has a velocity greater than a very small value
-	if (MagnitudeSquared(velocity_) > 0.00000001) {
-		heading_ = Normal(velocity_);
-		side_ = Perp(heading_);
-	}
-
-	//treat the screen as a toroid
-	//WrapAround(m_vPos, m_pWorld->cxClient(), m_pWorld->cyClient());
-}

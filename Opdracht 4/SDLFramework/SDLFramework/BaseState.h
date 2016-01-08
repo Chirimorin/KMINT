@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL_hints.h>
+struct Vector2;
 struct SDL_Texture;
 class Entity;
 
@@ -9,7 +10,8 @@ public:
 	BaseState(Uint8 r, Uint8 g, Uint8 b);
 	virtual ~BaseState() {}
 
-	virtual void Move(Entity* obj) = 0;
+	virtual void Update(Entity* obj) = 0;
+	virtual Vector2 CalculateForce(Entity* obj) = 0;
 	void setColor(SDL_Texture* texture);
 protected:
 	Uint8 r_;

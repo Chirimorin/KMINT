@@ -53,12 +53,12 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)../../SDL2-2.0.3/include;$(ProjectDir)../../SDL2_ttf-2.0.12/include;$(ProjectDir)../../SDL2_image-2.0.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)../../SDL2-2.0.3/include;$(SolutionDir)../../SDL2_ttf-2.0.12/include;$(SolutionDir)../../SDL2_image-2.0.0/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(ProjectDir)../../SDL2-2.0.3/lib/x86;$(ProjectDir)../../SDL2_ttf-2.0.12/lib/x86;$(ProjectDir)../../SDL2_image-2.0.0/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)../../SDL2-2.0.3/lib/x86;$(SolutionDir)../../SDL2_ttf-2.0.12/lib/x86;$(SolutionDir)../../SDL2_image-2.0.0/lib/x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -94,7 +94,6 @@
     <ClCompile Include="RabbitFleeState.cpp" />
     <ClCompile Include="RabbitWanderingState.cpp" />
     <ClCompile Include="Random.cpp" />
-    <ClCompile Include="SteeringBehaviors.cpp" />
     <ClCompile Include="vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +111,6 @@
     <ClInclude Include="RabbitFleeState.h" />
     <ClInclude Include="RabbitWanderingState.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="SteeringBehaviors.h" />
     <ClInclude Include="vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

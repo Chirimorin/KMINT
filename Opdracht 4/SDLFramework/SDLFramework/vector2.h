@@ -34,6 +34,7 @@ Vector2 operator/ (const Vector2 &a, float divisor);
 // Other operations
 float   Magnitude(const Vector2 &v);
 float   MagnitudeSquared(const Vector2 &v);
+float   MagnitudeWrapped(const Vector2 &v);
 Vector2 Normal(const Vector2 &v);
 float   DotProduct(const Vector2 &a, const Vector2 &b);
 float   DotPerp(const Vector2 &a, const Vector2 &b);
@@ -44,3 +45,8 @@ Vector2 Reflect(const Vector2 &V, const Vector2 &N);
 
 Vector2 Truncate(const Vector2 &v, float max);
 Vector2 Perp(const Vector2 &v);
+
+double Angle(const Vector2 &v);
+void WrapAround(Vector2 &v);
+
+Vector2 WrappedDistance(Vector2& v);

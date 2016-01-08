@@ -24,6 +24,22 @@ public:
 			mApplication->DrawTexture(mTexture, mX, mY, mWidth, mHeight);
 	}
 
+	virtual void Draw(double angle)
+	{
+		if (!mIsActive)
+			return;
+
+		// Teken de texture 9 keer zodat de wraparound er beter uit ziet
+		for (int w = -800; w <= 800; w += 800)
+			for (int h = -600; h <= 600; h += 600)
+			{
+				if (mWidth == 0 || mHeight == 0)
+					mApplication->DrawTexture(mTexture, mX + w, mY + h, angle);
+				else
+					mApplication->DrawTexture(mTexture, mX + w, mY + h, mWidth, mHeight, angle);
+			}
+	}
+
 	////////////////////////////////////////////////////////////////////////////////////////////////////
 	/// <summary>	Abstract update method </summary>
 	///
