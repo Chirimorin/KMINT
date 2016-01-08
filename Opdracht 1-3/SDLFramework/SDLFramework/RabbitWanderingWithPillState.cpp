@@ -10,7 +10,6 @@
 RabbitWanderingWithPillState::RabbitWanderingWithPillState(Rabbit* rabbit) : RabbitState(rabbit, 0, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	rabbit_->hasPill(true);
-	isAttacking_ = false;
 	std::cout << "Haas: wander with pill \n";
 }
 

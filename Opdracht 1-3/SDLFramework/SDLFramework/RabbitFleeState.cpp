@@ -12,7 +12,6 @@
 
 RabbitFleeState::RabbitFleeState(Rabbit* rabbit) : RabbitState(rabbit, 127, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
-	isAttacking_ = false;
 	std::cout << "Haas: flee \n";
 }
 
@@ -27,17 +26,7 @@ void RabbitFleeState::Move(Entity* obj, Graph* graph)
 
 	Waypoint* waypoint = obj->getWaypoint();
 	std::vector<Edge*> edges = waypoint->getEdges();
-	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
-
-	// TODO: haas van de koe vandaan verplaatsen
-
-	if (Random::getRandomNumber(0, 1)) {
-		obj->MoveTo(edge->getWaypoint1());
-	}
-	else {
-		obj->MoveTo(edge->getWaypoint2());
-	}
-
+	
 	bool seesPill = false;
 	bool seesWeapon = false;
 
@@ -59,17 +48,31 @@ void RabbitFleeState::Move(Entity* obj, Graph* graph)
 	// TODO: kans op bepaalde keuze aanpassen afhankelijk van succes
 	if (seesPill && seesWeapon) {
 		if (Random::getRandomNumber(0, 1)) {
-			obj->setState(new RabbitFindPillState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
+			obj->setState(new RabbitFindPillState(rabbit_), graph); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
 		}
 		else {
-			obj->setState(new RabbitFindWeaponState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
+			obj->setState(new RabbitFindWeaponState(rabbit_), graph); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
 		}
+		return;
 	}
-	else if (seesPill) {
-		obj->setState(new RabbitFindPillState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
+	if (seesPill) {
+		obj->setState(new RabbitFindPillState(rabbit_), graph); // Hier moet denk ik ook een kans komen of hij naar de pil wil gaan of blijft vluchten
+		return;
 	}
-	else if (seesWeapon) {
-		obj->setState(new RabbitFindWeaponState(rabbit_)); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
+	if (seesWeapon) {
+		obj->setState(new RabbitFindWeaponState(rabbit_), graph); // Hier moet denk ik ook een kans komen of hij naar het wapen wil gaan of blijft vluchten
+		return;
+	}
+
+	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
+
+	// TODO: haas van de koe vandaan verplaatsen
+
+	if (Random::getRandomNumber(0, 1)) {
+		obj->MoveTo(edge->getWaypoint1());
+	}
+	else {
+		obj->MoveTo(edge->getWaypoint2());
 	}
 
 }

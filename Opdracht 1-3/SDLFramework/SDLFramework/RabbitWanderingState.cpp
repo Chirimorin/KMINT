@@ -13,24 +13,14 @@
 RabbitWanderingState::RabbitWanderingState(Rabbit* rabbit) : RabbitState(rabbit, 255, 255, 255)
 {
 	rabbit_->hasPill(false);
-	isAttacking_ = false;
 	std::cout << "Haas: wander \n";
 }
 
 void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 {
 	timer_ = 0;
-
 	Waypoint* waypoint = obj->getWaypoint();
 	std::vector<Edge*> edges = waypoint->getEdges();
-	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
-
-	if (Random::getRandomNumber(0, 1)) {
-		obj->MoveTo(edge->getWaypoint1());
-	}
-	else {
-		obj->MoveTo(edge->getWaypoint2());
-	}
 	
 	bool seesCow = false;
 
@@ -50,14 +40,25 @@ void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 	if (seesCow) {
 		switch (Random::getRandomNumber(0, 2)) {
 			case 0:
-				obj->setState(new RabbitFleeState(rabbit_));
+				obj->setState(new RabbitFleeState(rabbit_), graph);
 				break;
 			case 1:
-				obj->setState(new RabbitFindPillState(rabbit_)); // TODO: als pil in de buurt is en koe daar niet is
+				obj->setState(new RabbitFindPillState(rabbit_), graph); // TODO: als pil in de buurt is en koe daar niet is
 				break;
 			case 2:
-				obj->setState(new RabbitFindWeaponState(rabbit_)); // TODO: als wapen in de buurt is en koe daar niet is
+				obj->setState(new RabbitFindWeaponState(rabbit_), graph); // TODO: als wapen in de buurt is en koe daar niet is
 				break;
 		}
+
+		return;
+	}
+
+	Edge* edge = edges.at(Random::getRandomNumber(0, edges.size() - 1));
+
+	if (Random::getRandomNumber(0, 1)) {
+		obj->MoveTo(edge->getWaypoint1());
+	}
+	else {
+		obj->MoveTo(edge->getWaypoint2());
 	}
 }

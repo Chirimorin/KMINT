@@ -8,7 +8,6 @@
 
 RabbitFindWeaponState::RabbitFindWeaponState(Rabbit* rabbit) : RabbitState(rabbit, 255, 75, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
-	isAttacking_ = false;
 	std::cout << "Haas: find weapon \n";
 }
 

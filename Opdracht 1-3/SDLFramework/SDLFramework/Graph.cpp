@@ -22,6 +22,12 @@ Graph::Graph(FWApplication* application)
 	waypoints.push_back(new Waypoint(337.0f, 306.0f));
 	waypoints.push_back(new Waypoint(550.0f, 500.0f));
 	waypoints.push_back(new Waypoint(150.0f, 400.0f));
+
+	waypoints.push_back(new Waypoint(600.0f, 150.0f));
+	waypoints.push_back(new Waypoint(600.0f, 350.0f));
+	waypoints.push_back(new Waypoint(235.0f, 50.0f));
+	waypoints.push_back(new Waypoint(300.0f, 450.0f));
+	waypoints.push_back(new Waypoint(110.0f, 550.0f));
 	
 	edges.push_back(new Edge(waypoints.at(0), waypoints.at(2)));
 	edges.push_back(new Edge(waypoints.at(0), waypoints.at(6)));
@@ -31,6 +37,16 @@ Graph::Graph(FWApplication* application)
 	edges.push_back(new Edge(waypoints.at(3), waypoints.at(5)));
 	edges.push_back(new Edge(waypoints.at(4), waypoints.at(6)));
 	edges.push_back(new Edge(waypoints.at(4), waypoints.at(5)));
+	edges.push_back(new Edge(waypoints.at(7), waypoints.at(8)));
+	edges.push_back(new Edge(waypoints.at(7), waypoints.at(3)));
+	edges.push_back(new Edge(waypoints.at(7), waypoints.at(1)));
+	edges.push_back(new Edge(waypoints.at(8), waypoints.at(3)));
+	edges.push_back(new Edge(waypoints.at(9), waypoints.at(0)));
+	edges.push_back(new Edge(waypoints.at(9), waypoints.at(1)));
+	edges.push_back(new Edge(waypoints.at(4), waypoints.at(10)));
+	edges.push_back(new Edge(waypoints.at(5), waypoints.at(10)));
+	edges.push_back(new Edge(waypoints.at(5), waypoints.at(11)));
+	edges.push_back(new Edge(waypoints.at(6), waypoints.at(11)));
 }
 
 

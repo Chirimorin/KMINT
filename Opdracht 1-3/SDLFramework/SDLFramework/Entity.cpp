@@ -17,15 +17,12 @@ void Entity::MoveTo(Waypoint* waypoint)
 	mY = static_cast<uint32_t>(waypoint_->getPosition().y);
 }
 
-void Entity::setState(BaseState* state)
+void Entity::setState(BaseState* state, Graph* graph)
 {
 	delete state_;
 	state_ = state;
 	state->setColor(mTexture);
+
+	if (graph)
+		state->Move(this, graph);
 }
-
-bool Entity::isAttacking() {
-	return state_->isAttacking(); 
-}
-
-

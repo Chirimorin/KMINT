@@ -7,7 +7,6 @@
 
 CowSleepingState::CowSleepingState(Cow* cow) : CowState(cow, 0, 255, 0)
 {
-	isAttacking_ = false;
 	std::cout << "Koe: sleeping \n";
 }
 

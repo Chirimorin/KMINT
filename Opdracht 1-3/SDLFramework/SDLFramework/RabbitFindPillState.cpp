@@ -8,7 +8,6 @@
 
 RabbitFindPillState::RabbitFindPillState(Rabbit* rabbit) : RabbitState(rabbit, 225, 255, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
-	isAttacking_ = false;
 	std::cout << "Haas: find pill \n";
 }
 

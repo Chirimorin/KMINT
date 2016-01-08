@@ -14,13 +14,11 @@ public:
 
 	virtual void Move(Entity* obj, Graph* graph) = 0;
 	void setColor(SDL_Texture* texture);
-	virtual bool isAttacking() { return isAttacking_; }
 	virtual bool getAttacked(Graph* graph) = 0;
 protected:
 	Uint8 r_;
 	Uint8 g_;
 	Uint8 b_;
-	bool isAttacking_;
 };
 
 class CowState : public BaseState

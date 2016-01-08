@@ -16,10 +16,9 @@ public:
 	virtual void MoveTo(Waypoint* waypoint);
 	Waypoint* getWaypoint() { return waypoint_; }
 
-	virtual void setState(BaseState* state);
+	virtual void setState(BaseState* state, Graph* graph = nullptr);
 	virtual void reset(Graph* graph) = 0;
 	virtual bool getAttacked(Graph* graph) = 0;
-	bool isAttacking();
 protected:
 	Waypoint* waypoint_ = nullptr;
 	BaseState* state_;
