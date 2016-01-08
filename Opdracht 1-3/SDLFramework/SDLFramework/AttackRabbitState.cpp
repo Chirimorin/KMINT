@@ -31,6 +31,6 @@ void AttackRabbitState::Move(Entity* obj, Graph* graph)
 		}
 		
 		//obj->setState(new WanderingStateCow());
-		graph->getRabbit()->resetState();
+		graph->getRabbit()->resetState(graph);
 	}
 }

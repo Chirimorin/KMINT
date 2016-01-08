@@ -1,8 +1,8 @@
 #pragma once
-#include "cow.h"
-#include "rabbit.h"
 #include <SDL_hints.h>
 struct SDL_Texture;
+class Rabbit;
+class Cow;
 class Entity;
 class Graph;
 
@@ -15,7 +15,7 @@ public:
 	virtual void Move(Entity* obj, Graph* graph) = 0;
 	void setColor(SDL_Texture* texture);
 	virtual bool isAttacking() { return isAttacking_; }
-	virtual bool getAttacked() = 0;
+	virtual bool getAttacked(Graph* graph) = 0;
 protected:
 	Uint8 r_;
 	Uint8 g_;
@@ -29,7 +29,7 @@ public:
 	CowState(Cow* cow, Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) { cow_ = cow;  }
 	~CowState() {}
 
-	bool getAttacked() override;
+	bool getAttacked(Graph* graph) override;
 protected:
 	Cow* cow_ = nullptr;
 };
@@ -45,7 +45,7 @@ public:
 	RabbitState(Rabbit* rabbit, Uint8 r, Uint8 g, Uint8 b) : BaseState(r, g, b) { rabbit_ = rabbit; }
 	virtual ~RabbitState() {}
 
-	bool getAttacked() override;
+	bool getAttacked(Graph* graph) override;
 protected:
 	Rabbit* rabbit_ = nullptr;
 };

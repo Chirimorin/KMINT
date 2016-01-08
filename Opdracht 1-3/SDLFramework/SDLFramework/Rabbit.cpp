@@ -1,9 +1,10 @@
 #include "Rabbit.h"
 #include "RabbitWanderingState.h"
+#include "Graph.h"
 
 #include <iostream>
 
-Rabbit::Rabbit(Waypoint* waypoint) : Entity()
+Rabbit::Rabbit(Graph* graph, Waypoint* waypoint) : Entity()
 {
 	mTexture = mApplication->LoadTexture("rabbit.bmp");
 
@@ -13,7 +14,7 @@ Rabbit::Rabbit(Waypoint* waypoint) : Entity()
 
 	MoveTo(waypoint);
 
-	resetState();
+	reset(graph);
 }
 
 Rabbit::~Rabbit()
@@ -36,7 +37,12 @@ void Rabbit::MoveTo(Waypoint* waypoint)
 	mX += mWidth/2;
 }
 
-void Rabbit::resetState()
+void Rabbit::reset(Graph* graph)
 {
+	waypoint_ = graph->getRandomWaypoint(std::vector<Waypoint*>()); // TODO: ver van  koe vandaan
 	setState(new RabbitWanderingState(this));
+}
+
+bool Rabbit::getAttacked(Graph* graph) {
+	return state_->getAttacked(graph);
 }

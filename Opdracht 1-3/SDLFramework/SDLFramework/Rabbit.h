@@ -6,7 +6,7 @@
 class Rabbit : public Entity
 {
 public:
-	Rabbit(Waypoint* waypoint);
+	Rabbit(Graph* graph, Waypoint* waypoint);
 	~Rabbit();
 
 	void Update(float deltaTime) override;
@@ -14,7 +14,13 @@ public:
 	void Move(Graph* graph) override;
 	void MoveTo(Waypoint* waypoint) override;
 
-	void resetState() override;
-	bool getAttacked() override { return false; }; // TODO: nog goed maken
+	void reset(Graph* graph) override;
+	bool getAttacked(Graph* graph) override;
+
+	void hasPill(bool hasPill) { hasPill_ = hasPill; }
+	bool hasPill() { return hasPill_; }
+protected:
+	bool hasPill_ = false;
+
 };
 

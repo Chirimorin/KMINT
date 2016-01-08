@@ -8,10 +8,12 @@
 #include "Random.h"
 
 #include <algorithm>
+#include <iostream>
 
 RabbitFleeState::RabbitFleeState(Rabbit* rabbit) : RabbitState(rabbit, 127, 0, 255) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
+	std::cout << "Haas: flee \n";
 }
 
 void RabbitFleeState::Move(Entity* obj, Graph* graph)

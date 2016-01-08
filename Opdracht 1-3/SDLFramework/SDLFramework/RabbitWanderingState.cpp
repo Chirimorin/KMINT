@@ -8,10 +8,13 @@
 #include "Random.h"
 
 #include <algorithm>
+#include <iostream>
 
 RabbitWanderingState::RabbitWanderingState(Rabbit* rabbit) : RabbitState(rabbit, 255, 255, 255)
 {
+	rabbit_->hasPill(false);
 	isAttacking_ = false;
+	std::cout << "Haas: wander \n";
 }
 
 void RabbitWanderingState::Move(Entity* obj, Graph* graph)
@@ -39,6 +42,7 @@ void RabbitWanderingState::Move(Entity* obj, Graph* graph)
 
 		if (graph->getCow()->getWaypoint() == currentWaypoint) {
 			seesCow = true;
+			std::cout << "Haas: ziet koe \n";
 		}
 	});
 

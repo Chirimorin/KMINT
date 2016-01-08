@@ -35,11 +35,11 @@ int main(int args[])
 	occupiedWaypoints.push_back(pill->getWaypoint());
 	graph->setWeapon(weapon);
 
-	auto cow = new Cow(graph->getRandomWaypoint(occupiedWaypoints));
+	auto cow = new Cow(graph, graph->getRandomWaypoint(occupiedWaypoints));
 	occupiedWaypoints.push_back(cow->getWaypoint());
 	graph->setCow(cow);
 
-	auto rabbit = new Rabbit(graph->getRandomWaypoint(occupiedWaypoints));
+	auto rabbit = new Rabbit(graph, graph->getRandomWaypoint(occupiedWaypoints));
 	occupiedWaypoints.push_back(rabbit->getWaypoint());
 	graph->setRabbit(rabbit);
 

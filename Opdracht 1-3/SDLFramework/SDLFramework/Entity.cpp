@@ -23,3 +23,9 @@ void Entity::setState(BaseState* state)
 	state_ = state;
 	state->setColor(mTexture);
 }
+
+bool Entity::isAttacking() {
+	return state_->isAttacking(); 
+}
+
+

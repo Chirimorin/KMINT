@@ -15,9 +15,6 @@
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{f5db80d2-bdda-4a64-8822-71e2992e3f7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\States\old">
-      <UniqueIdentifier>{3819ba17-fa25-4e8d-902f-5cfa273c572b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\States\Cow">
       <UniqueIdentifier>{fb773683-6c30-4be2-b948-98c6175bfa4c}</UniqueIdentifier>
     </Filter>
@@ -35,9 +32,6 @@
     </Filter>
     <Filter Include="Header Files\States">
       <UniqueIdentifier>{16abdfe6-42ea-42a8-b1e0-41607378813e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\States\old states">
-      <UniqueIdentifier>{c6ffe4dc-2477-46ed-92a7-afb8e010ed75}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\States\Cow">
       <UniqueIdentifier>{20edf9cb-2c3f-4cd8-936b-97fd1ee7b9f1}</UniqueIdentifier>
@@ -83,24 +77,6 @@
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AttackCowState.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
-    <ClCompile Include="AttackRabbitState.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
-    <ClCompile Include="FindPillState.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
-    <ClCompile Include="FindWeaponState.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderingStateCow.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
-    <ClCompile Include="WanderingStateRabbit.cpp">
-      <Filter>Source Files\States\old</Filter>
-    </ClCompile>
     <ClCompile Include="CowChasingState.cpp">
       <Filter>Source Files\States\Cow</Filter>
     </ClCompile>
@@ -145,18 +121,6 @@
     <ClInclude Include="Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AttackCowState.h">
-      <Filter>Header Files\States\old states</Filter>
-    </ClInclude>
-    <ClInclude Include="AttackRabbitState.h">
-      <Filter>Header Files\States\old states</Filter>
-    </ClInclude>
-    <ClInclude Include="FindWeaponState.h">
-      <Filter>Header Files\States\old states</Filter>
-    </ClInclude>
-    <ClInclude Include="FindPillState.h">
-      <Filter>Header Files\States\old states</Filter>
-    </ClInclude>
     <ClInclude Include="Cow.h">
       <Filter>Header Files\Entities</Filter>
     </ClInclude>
@@ -183,12 +147,6 @@
     </ClInclude>
     <ClInclude Include="Waypoint.h">
       <Filter>Header Files\Graph</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingStateCow.h">
-      <Filter>Header Files\States\old states</Filter>
-    </ClInclude>
-    <ClInclude Include="WanderingStateRabbit.h">
-      <Filter>Header Files\States\old states</Filter>
     </ClInclude>
     <ClInclude Include="BaseState.h">
       <Filter>Header Files\States</Filter>

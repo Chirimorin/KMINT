@@ -1,5 +1,10 @@
 #include "BaseState.h"
+#include "Cow.h"
+#include "Rabbit.h"
+#include "Graph.h"
 #include <SDL.h>
+
+#include <iostream>
 
 BaseState::BaseState(Uint8 r, Uint8 g, Uint8 b) : r_{r}, g_{g}, b_{b}
 {
@@ -10,29 +15,27 @@ void BaseState::setColor(SDL_Texture* texture)
 	SDL_SetTextureColorMod(texture, r_, g_, b_);
 }
 
-bool CowState::getAttacked()
+bool CowState::getAttacked(Graph* graph)
 {
 	// TODO: koe resetten
-	cow_->resetState();
+	std::cout << "HAAS VALT KOE AAN \n";
+	cow_->reset(graph);
 	return true;
 }
 
-bool RabbitState::getAttacked()
+bool RabbitState::getAttacked(Graph* graph)
 {
-	// TODO:
-	// haas heeft pil
-	// return false
-
-	//zo nee
 	// TODO: rabbit resetten
 
-	/*if () {
+	if (rabbit_->hasPill()) {
+		std::cout << "HAAS GEEFT KOE PIL \n";
 		return false;
 	}
 	else {
-		rabbit_->resetState();
+		std::cout << "KOE VALT HAAS AAN \n";
+		rabbit_->reset(graph);
 		return true;
-	}*/
+	}
 
 	return true;
 }

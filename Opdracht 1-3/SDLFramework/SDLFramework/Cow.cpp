@@ -3,8 +3,9 @@
 #include <iostream>
 #include <SDL.h>
 #include "CowChasingState.h"
+#include "Graph.h"
 
-Cow::Cow(Waypoint* waypoint) : Entity()
+Cow::Cow(Graph* graph, Waypoint* waypoint) : Entity()
 {
 	mTexture = mApplication->LoadTexture("cow.bmp");
 
@@ -14,7 +15,7 @@ Cow::Cow(Waypoint* waypoint) : Entity()
 
 	MoveTo(waypoint);
 	
-	resetState();
+	reset(graph);
 }
 
 Cow::~Cow()
@@ -37,7 +38,12 @@ void Cow::MoveTo(Waypoint* waypoint)
 	mX -= mWidth/2;
 }
 
-void Cow::resetState()
+void Cow::reset(Graph* graph)
 {
+	waypoint_ = graph->getRandomWaypoint(std::vector<Waypoint*>()); // TODO: ver van  haas vandaan
 	setState(new CowChasingState(this));
+}
+
+bool Cow::getAttacked(Graph* graph) {
+	return state_->getAttacked(graph);
 }

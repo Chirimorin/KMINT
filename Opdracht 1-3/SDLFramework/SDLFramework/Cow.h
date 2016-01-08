@@ -6,7 +6,7 @@
 class Cow : public Entity
 {
 public:
-	Cow(Waypoint* waypoint);
+	Cow(Graph* graph, Waypoint* waypoint);
 	~Cow();
 
 	void Update(float deltaTime) override;
@@ -14,7 +14,7 @@ public:
 	void Move(Graph* graph) override;
 	void MoveTo(Waypoint* waypoint) override;
 
-	void resetState() override;
-	bool getAttacked() override { return false; }; // TODO: nog goed maken
+	void reset(Graph* graph) override;
+	bool getAttacked(Graph* graph) override;
 };
 

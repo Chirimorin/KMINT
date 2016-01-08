@@ -4,10 +4,12 @@
 #include "Cow.h"
 
 #include <algorithm>
+#include <iostream>
 
 RabbitAttackState::RabbitAttackState(Rabbit* rabbit) : RabbitState(rabbit, 255, 0, 0)
 {
 	isAttacking_ = true;
+	std::cout << "Haas: attack \n";
 }
 
 void RabbitAttackState::Move(Entity* obj, Graph* graph)
@@ -33,7 +35,7 @@ void RabbitAttackState::Move(Entity* obj, Graph* graph)
 		}
 	});
 
-	if (seesCow) {
+	if (seesCow && graph->getCow()->getAttacked(graph)) {
 		// TODO: koe aanvallen als deze in een bepaalde range is
 		
 		

@@ -4,9 +4,12 @@
 #include "Graph.h"
 #include "Pill.h"
 
+#include <iostream>
+
 RabbitFindPillState::RabbitFindPillState(Rabbit* rabbit) : RabbitState(rabbit, 225, 255, 0) // TODO: misschien kleur aanpassen in verband met veel states
 {
 	isAttacking_ = false;
+	std::cout << "Haas: find pill \n";
 }
 
 void RabbitFindPillState::Move(Entity* obj, Graph* graph)
