@@ -19,9 +19,11 @@ int main(int args[])
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
 
-	Instance instance1 = Instance(application, 250, 0, 0);
+	Instance instance1 = Instance(application, 255, 0, 0);
+	/*Instance instance2 = Instance(application, 0, 255, 0);
+	Instance instance3 = Instance(application, 0, 0, 255);
+	Instance instance4 = Instance(application, 255, 255, 0);*/
 	
-
 	//while (true){}
 	while (application->IsRunning())
 	{

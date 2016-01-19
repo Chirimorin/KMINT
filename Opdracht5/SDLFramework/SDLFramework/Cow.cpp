@@ -1,4 +1,5 @@
 #include "Cow.h"
+#include "CowWanderingState.h"
 #include <SDL.h>
 
 //#include "CowChasingState.h"
@@ -15,7 +16,7 @@ Cow::Cow(Uint8 r, Uint8 g, Uint8 b) : Entity()
 	mX = 350;
 	mY = 250;
 
-	//state_ = new CowChasingState();
+	state_ = new CowWanderingState();
 
 	// TODO: goede waardes 
 	position_ = { 50.f, 50.f };

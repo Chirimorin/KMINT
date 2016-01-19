@@ -6,12 +6,12 @@ Entity::Entity() : IGameObject()
 
 Entity::~Entity()
 {
-	//delete state_;
+	delete state_;
 }
 
 void Entity::Update(float deltaTime)
 {
-	/*state_->Update(this);
+	state_->Update(this);
 
 	Vector2 steeringForce = Truncate(state_->CalculateForce(this), maxForce_);
 
@@ -37,12 +37,13 @@ void Entity::Update(float deltaTime)
 	WrapAround(position_);
 
 	mX = static_cast<uint32_t>(position_.x);
-	mY = static_cast<uint32_t>(position_.y);*/
+	mY = static_cast<uint32_t>(position_.y);
 }
 
 void Entity::Draw()
 {
 	//IGameObject::Draw(Angle(heading_));
+	IGameObject::Draw();
 }
 
 /*void Entity::SetState(BaseState* state)

@@ -1,6 +1,6 @@
 #pragma once
 #include "IGameObject.h"
-//#include "BaseState.h"
+#include "BaseState.h"
 #include "vector2.h"
 
 class Entity : public IGameObject
@@ -38,7 +38,7 @@ protected:
 	//the maximum rate at which this vehicle can rotate
 	float maxTurnRate_;
 
-	//BaseState* state_;
+	BaseState* state_;
 
 	Entity* target_ = nullptr;
 };

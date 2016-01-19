@@ -1,4 +1,5 @@
 #include "Rabbit.h"
+#include "RabbitChasingState.h"
 #include <SDL.h>
 
 //#include "RabbitWanderingState.h"
@@ -13,10 +14,10 @@ Rabbit::Rabbit(Uint8 r, Uint8 g, Uint8 b) : Entity()
 	 
 	SDL_SetTextureColorMod(mTexture, r, g, b);
 
-	mX = 250;
-	mY = 250;
+	//mX = 250;
+	//mY = 250;
 
-	//state_ = new RabbitWanderingState();
+	state_ = new RabbitChasingState();
 
 	// TODO: goede waardes 
 	position_ = { 250.f, 250.f };
