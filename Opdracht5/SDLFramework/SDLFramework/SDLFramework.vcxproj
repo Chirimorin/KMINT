@@ -86,6 +86,9 @@
   <ItemGroup>
     <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="Cow.cpp" />
+    <ClCompile Include="CowFindPillState.cpp" />
+    <ClCompile Include="CowFindWeaponState.cpp" />
+    <ClCompile Include="CowHideState.cpp" />
     <ClCompile Include="CowWanderingState.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FWApplication.cpp" />
@@ -106,6 +109,9 @@
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Cow.h" />
+    <ClInclude Include="CowFindPillState.h" />
+    <ClInclude Include="CowFindWeaponState.h" />
+    <ClInclude Include="CowHideState.h" />
     <ClInclude Include="CowWanderingState.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FWApplication.h" />

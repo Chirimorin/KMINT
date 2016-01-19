@@ -7,9 +7,9 @@ RabbitChasingState::RabbitChasingState() : RabbitState()
 
 Vector2 RabbitChasingState::CalculateForce(Entity* obj)
 {
-	Vector2 result = { 0.f,0.f };
+	Vector2 result = { 0.f, 0.f };
 
-	// Vector directly towards the rabbit
+	// Vector directly towards the cow
 	Vector2 goal = obj->GetTarget()->GetPosition() - obj->GetPosition();
 	goal += obj->GetTarget()->GetHeading() * Magnitude(goal) / 5;
 	WrapAround(goal);

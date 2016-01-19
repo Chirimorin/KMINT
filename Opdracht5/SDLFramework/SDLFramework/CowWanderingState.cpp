@@ -15,6 +15,13 @@ void CowWanderingState::Update(Entity* obj)
 	{
 		obj->SetState(new CowFleeState());
 	}
+
+	// TODO:
+	// Door middel van kansen bepaken of de koe:
+	// - Vlucht
+	// - Vlucht en de pil zoekt
+	// - Zich verstopt
+	// - Vlucht en wapen zoekt
 }
 
 Vector2 CowWanderingState::CalculateForce(Entity* obj)
@@ -23,7 +30,7 @@ Vector2 CowWanderingState::CalculateForce(Entity* obj)
 	Vector2 result = destination_ - obj->GetPosition();
 	result = WrappedDistance(result);
 
-	// Kies een nieuwe destination als de rabbit er is
+	// Kies een nieuwe destination als de cow er is
 	while (Magnitude(result) < 50)
 	{
 		SetRandomDestination();
@@ -34,12 +41,12 @@ Vector2 CowWanderingState::CalculateForce(Entity* obj)
 	// Niet te snel rennen
 	result = Normal(result) * 30;
 
-	// Als de rabbit snel loopt, rem af
+	// Als de cow snel loopt, rem af
 	if (Magnitude(obj->GetVelocity()) > 50)
 	{
 		result += (obj->GetVelocity() * -0.25f);
 	}
-	// Als de rabbit langzaam loopt, ga iets sneller
+	// Als de cow langzaam loopt, ga iets sneller
 	else if (Magnitude(obj->GetVelocity()) < 25)
 	{
 		result += (obj->GetVelocity() * 0.25f);
@@ -50,7 +57,7 @@ Vector2 CowWanderingState::CalculateForce(Entity* obj)
 
 void CowWanderingState::SetRandomDestination()
 {
-	destination_ = { 0.f,0.f };
+	destination_ = { 0.f, 0.f };
 	destination_.x += Random::getRandomNumber(0, 800);
 	destination_.y += Random::getRandomNumber(0, 600);
 }
