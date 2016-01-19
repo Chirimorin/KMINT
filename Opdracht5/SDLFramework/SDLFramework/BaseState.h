@@ -12,6 +12,7 @@ public:
 
 	virtual void Update(Entity* obj) = 0;
 	virtual Vector2 CalculateForce(Entity* obj) = 0;
+	virtual bool getAttacked() = 0;
 };
 
 class CowState : public BaseState
@@ -19,6 +20,8 @@ class CowState : public BaseState
 public:
 	CowState() : BaseState() {}
 	~CowState() {}
+
+	bool getAttacked() override;
 };
 
 class RabbitState : public BaseState

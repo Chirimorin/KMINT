@@ -21,25 +21,25 @@ public:
 	float GetMaxForce() const { return maxForce_; }
 
 	void SetState(BaseState* state);
+
+	void addPoints(int points) { points_ += points; }
+
 protected:
 	Vector2 position_;
-	Vector2 velocity_;
-	//a normalized vector pointing in the direction the entity is heading.
-	Vector2 heading_;
-	//a vector perpendicular to the heading vector
-	Vector2 side_;
+	Vector2 velocity_; 
+	Vector2 heading_; // a normalized vector pointing in the direction the entity is heading.
+	Vector2 side_; // a vector perpendicular to the heading vector
 
 	float mass_;
-	//the maximum speed at which this entity may travel.
-	float maxSpeed_;
-	//the maximum force this entity can produce to power itself
-	//(think rockets and thrust)
-	float maxForce_;
-	//the maximum rate at which this vehicle can rotate
-	float maxTurnRate_;
+	float maxSpeed_; //the maximum speed at which this entity may travel.
+	float maxForce_; //the maximum force this entity can produce to power itself (think rockets and thrust)
+	float maxTurnRate_; //the maximum rate at which this vehicle can rotate
 
 	BaseState* state_;
 
 	Entity* target_ = nullptr;
+
+private:
+	int points_ = 0;
 };
 
