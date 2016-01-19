@@ -14,9 +14,6 @@ Rabbit::Rabbit(Uint8 r, Uint8 g, Uint8 b) : Entity()
 	 
 	SDL_SetTextureColorMod(mTexture, r, g, b);
 
-	//mX = 250;
-	//mY = 250;
-
 	state_ = new RabbitChasingState();
 
 	// TODO: goede waardes 

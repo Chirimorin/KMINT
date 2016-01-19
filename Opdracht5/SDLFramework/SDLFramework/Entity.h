@@ -20,7 +20,7 @@ public:
 	float GetMaxTurnRate() const { return maxTurnRate_; }
 	float GetMaxForce() const { return maxForce_; }
 
-	//void SetState(BaseState* state);
+	void SetState(BaseState* state);
 protected:
 	Vector2 position_;
 	Vector2 velocity_;

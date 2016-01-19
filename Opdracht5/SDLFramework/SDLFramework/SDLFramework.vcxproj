@@ -94,6 +94,7 @@
     <ClCompile Include="Pill.cpp" />
     <ClCompile Include="Rabbit.cpp" />
     <ClCompile Include="RabbitChasingState.cpp" />
+    <ClCompile Include="CowFleeState.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="vector2.cpp" />
     <ClCompile Include="Weapon.cpp" />
@@ -113,6 +114,7 @@
     <ClInclude Include="Pill.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="RabbitChasingState.h" />
+    <ClInclude Include="CowFleeState.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="vector2.h" />
     <ClInclude Include="Weapon.h" />

@@ -13,9 +13,6 @@ Cow::Cow(Uint8 r, Uint8 g, Uint8 b) : Entity()
 
 	SDL_SetTextureColorMod(mTexture, r, g, b);
 
-	mX = 350;
-	mY = 250;
-
 	state_ = new CowWanderingState();
 
 	// TODO: goede waardes 

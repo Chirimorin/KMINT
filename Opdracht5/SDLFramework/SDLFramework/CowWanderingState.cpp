@@ -1,7 +1,6 @@
 #include "CowWanderingState.h"
 #include "Cow.h"
-#include <iostream>
-//#include "RabbitFleeState.h"
+#include "CowFleeState.h"
 #include "Random.h"
 
 CowWanderingState::CowWanderingState() : CowState()
@@ -11,10 +10,10 @@ CowWanderingState::CowWanderingState() : CowState()
 
 void CowWanderingState::Update(Entity* obj)
 {
-	Vector2 toCow = obj->GetTarget()->GetPosition() - obj->GetPosition();
-	if (MagnitudeWrapped(toCow) < 150.f)
+	Vector2 toRabbit = obj->GetTarget()->GetPosition() - obj->GetPosition();
+	if (MagnitudeWrapped(toRabbit) < 300.f)
 	{
-		//obj->SetState(new RabbitFleeState()); // TODO
+		obj->SetState(new CowFleeState());
 	}
 }
 

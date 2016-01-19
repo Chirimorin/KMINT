@@ -46,9 +46,8 @@ void Entity::Draw()
 	IGameObject::Draw();
 }
 
-/*void Entity::SetState(BaseState* state)
+void Entity::SetState(BaseState* state)
 {
 	delete state_;
 	state_ = state;
-	state_->setColor(mTexture);
-}*/
+}

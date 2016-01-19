@@ -47,9 +47,6 @@
     <ClCompile Include="vector2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Instance.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RabbitChasingState.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -61,6 +58,12 @@
     </ClCompile>
     <ClCompile Include="Random.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Instance.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="CowFleeState.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,9 +97,6 @@
     <ClInclude Include="vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Instance.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseState.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -108,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="Random.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.h">
+      <Filter>Header Files\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="CowFleeState.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
