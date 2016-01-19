@@ -5,7 +5,7 @@
 class Rabbit : public Entity
 {
 public:
-	Rabbit();
+	Rabbit(Uint8 r, Uint8 g, Uint8 b);
 	~Rabbit();
 };
 

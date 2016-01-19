@@ -1,13 +1,17 @@
 #include "Rabbit.h"
+#include <SDL.h>
+
 //#include "RabbitWanderingState.h"
 //#include "RabbitFleeState.h"
 
-Rabbit::Rabbit() : Entity()
+Rabbit::Rabbit(Uint8 r, Uint8 g, Uint8 b) : Entity()
 {
-	mTexture = mApplication->LoadTexture("rabbit.png");
+	mTexture = mApplication->LoadTexture("rabbit.bmp");
 
 	mWidth = 48;
-	mHeight = 39;
+	mHeight = 48;
+	 
+	SDL_SetTextureColorMod(mTexture, r, g, b);
 
 	mX = 250;
 	mY = 250;
@@ -15,7 +19,7 @@ Rabbit::Rabbit() : Entity()
 	//state_ = new RabbitWanderingState();
 
 	// TODO: goede waardes 
-	position_ = { 250.f,250.f };
+	position_ = { 250.f, 250.f };
 	velocity_ = Vector2(1, 1);
 	heading_ = Vector2(1, 1);
 	side_ = Vector2(1, 1);
@@ -29,3 +33,4 @@ Rabbit::Rabbit() : Entity()
 Rabbit::~Rabbit()
 {
 }
+

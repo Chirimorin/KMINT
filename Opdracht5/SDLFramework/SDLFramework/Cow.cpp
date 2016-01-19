@@ -1,17 +1,24 @@
 #include "Cow.h"
+#include <SDL.h>
+
 //#include "CowChasingState.h"
 
-Cow::Cow() : Entity()
+Cow::Cow(Uint8 r, Uint8 g, Uint8 b) : Entity()
 {
-	mTexture = mApplication->LoadTexture("cow.png");
+	mTexture = mApplication->LoadTexture("cow.bmp");
 
-	mWidth = 156;
-	mHeight = 57;
+	mWidth = 48;
+	mHeight = 48;
+
+	SDL_SetTextureColorMod(mTexture, r, g, b);
+
+	mX = 350;
+	mY = 250;
 
 	//state_ = new CowChasingState();
 
 	// TODO: goede waardes 
-	position_ = { 50.f,50.f };
+	position_ = { 50.f, 50.f };
 	velocity_ = Vector2(75, 5);
 	heading_ = Vector2(0, 0);
 	side_ = Vector2(0, 0);

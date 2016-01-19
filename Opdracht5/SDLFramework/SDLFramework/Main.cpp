@@ -4,6 +4,7 @@
 #include <SDL_events.h>
 #include "SDL_timer.h"
 #include <time.h>
+#include "Instance.h"
 
 int main(int args[])
 {
@@ -17,6 +18,8 @@ int main(int args[])
 	
 	application->SetTargetFPS(60);
 	application->SetColor(Color(255, 10, 40, 255));
+
+	Instance instance1 = Instance(application, 250, 0, 0);
 	
 
 	//while (true){}
@@ -41,8 +44,8 @@ int main(int args[])
 			}
 		}
 		
-		application->SetColor(Color(0, 0, 0, 255));
-		application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
+		//application->SetColor(Color(0, 0, 0, 255));
+		//application->DrawText("Welcome to KMint", 800 / 2, 600 / 2);
 		
 		// For the background
 		application->SetColor(Color(255, 255, 255, 255));

@@ -87,6 +87,7 @@
     <ClCompile Include="Cow.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="FWApplication.cpp" />
+    <ClCompile Include="Instance.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Pill.cpp" />
     <ClCompile Include="Rabbit.cpp" />
@@ -102,6 +103,7 @@
     <ClInclude Include="Entity.h" />
     <ClInclude Include="FWApplication.h" />
     <ClInclude Include="IGameObject.h" />
+    <ClInclude Include="Instance.h" />
     <ClInclude Include="Pill.h" />
     <ClInclude Include="Rabbit.h" />
     <ClInclude Include="vector2.h" />

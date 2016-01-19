@@ -5,7 +5,7 @@
 class Cow : public Entity
 {
 public:
-	Cow();
+	Cow(Uint8 r, Uint8 g, Uint8 b);
 	~Cow();
 
 	//void Draw() override;
