@@ -82,6 +82,9 @@
     <ClInclude Include="Config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="FWApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="IGameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -129,9 +132,6 @@
     </ClInclude>
     <ClInclude Include="CowHideState.h">
       <Filter>Header Files\States</Filter>
-    </ClInclude>
-    <ClInclude Include="FWApplication.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
